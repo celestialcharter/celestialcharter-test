@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sea Transfers — Celestial Charter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#d4b483', DEFAULT: '#c9a96e', dark: '#a18756' },
+            cream: { 50: '#fdfcf8', 100: '#f8f4ec' },
+            ink: { 900: '#1a1712', 700: '#3a3328', 600: '#5a5044', 400: '#9a8f82' },
+          },
+          fontFamily: { display: ['Cormorant Garamond', 'Georgia', 'serif'], body: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fdfcf8; color: #3a3328; }
+    .rule-short { display: inline-block; width: 48px; height: 1px; background: #c9a96e; vertical-align: middle; }
+    #nav { background: rgba(253,252,248,0.97); box-shadow: 0 1px 0 rgba(201,169,110,0.2); }
+    .btn-gold { display: inline-block; padding: 14px 40px; background: #c9a96e; color: #fdfcf8; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; border: 1.5px solid #c9a96e; cursor: pointer; transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease; text-decoration: none; }
+    .btn-gold:hover { background: #a18756; border-color: #a18756; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(161,135,86,0.3); }
+    .eyebrow { display: flex; align-items: center; gap: 14px; font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: #c9a96e; margin-bottom: 20px; }
+    .nav-link { position: relative; font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #5a5044; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: #c9a96e; transition: width 0.3s ease; }
+    .nav-link:hover { color: #1a1712; }
+    .nav-link:hover::after { width: 100%; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .transfer-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(201,169,110,0.12); gap: 24px; }
+    .transfer-row:last-child { border-bottom: none; }
+    .transfer-row:hover { background: rgba(201,169,110,0.03); margin: 0 -24px; padding: 20px 24px; }
+    .why-card { border: 1px solid rgba(201,169,110,0.15); padding: 32px; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+    .why-card:hover { border-color: rgba(201,169,110,0.4); box-shadow: 0 8px 32px rgba(161,135,86,0.08); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f8f4ec; }
+    ::-webkit-scrollbar-thumb { background: #c9a96e66; border-radius: 4px; }
+    /* ── Nav responsive fallback (works without Tailwind CDN) ── */
+    #mob-menu { display: none; }
+    #mob-menu.is-open { display: block; }
+    @media (max-width: 1023px) {
+      #nav-links { display: none !important; }
+      #nav-ctas  { display: none !important; }
+    }
+    @media (min-width: 1024px) {
+      #ham       { display: none !important; }
+      #nav-links { display: flex !important; align-items: center; gap: 2.5rem; }
+      #nav-ctas  { display: flex !important; align-items: center; gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex items-center justify-between h-20">
+    <a href="index.html"><img src="brand_assets/LOGO.png" alt="Celestial Charter" class="h-9 w-auto" /></a>
+    <nav id="nav-links" class="hidden lg:flex items-center gap-10">
+      <a href="index.html#story" class="nav-link">Our Story</a>
+      <a href="index.html#fleet" class="nav-link">The Fleet</a>
+      <a href="index.html#services" class="nav-link">What We Offer</a>
+      <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <div id="nav-ctas" class="hidden lg:flex items-center gap-5">
+      <a href="tel:+38267671705" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.12em;color:#7a6f62;text-decoration:none;">+382 67 671 705</a>
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Now</a>
+    </div>
+    <button id="ham" class="lg:hidden p-2 text-ink-700 focus-visible:outline-none" aria-label="Menu">
+      <svg width="22" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 22 16"><path d="M0 1h22M0 8h22M0 15h22" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="mob-menu" class="lg:hidden border-t border-gold/20" style="background:rgba(253,252,248,0.98);backdrop-filter:blur(20px);">
+    <ul class="px-8 py-6 space-y-5">
+      <li><a href="index.html#story" class="nav-link block py-1">Our Story</a></li>
+      <li><a href="index.html#fleet" class="nav-link block py-1">The Fleet</a></li>
+      <li><a href="index.html#services" class="nav-link block py-1">What We Offer</a></li>
+      <li><a href="index.html#testimonials" class="nav-link block py-1">Testimonials</a></li>
+      <li><a href="index.html#contact" class="nav-link block py-1">Contact</a></li>
+      <li class="pt-2"><a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold block text-center">Book Now</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative flex items-end" style="min-height:80vh;background:#0d1520;padding-top:80px;">
+  <div class="absolute inset-0">
+    <img src="brand_assets/a6.jpg" alt="Sea Transfers" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,21,32,0.9) 0%,rgba(13,21,32,0.35) 55%,rgba(13,21,32,0.08) 100%);"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-14 pb-20 w-full">
+    <a href="index.html#services" style="display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:32px;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">← What We Offer</a>
+    <div class="eyebrow" style="color:rgba(201,169,110,0.9);"><span class="rule-short"></span>Sea Transfers</div>
+    <h1 class="font-display font-light text-white" style="font-size:clamp(3rem,8vw,6rem);letter-spacing:-0.03em;line-height:1;">The Faster Way<br><em style="font-style:italic;">to Get There</em></h1>
+    <p style="font-family:'Inter',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.8;margin-top:20px;">While the road follows every curve of the bay, we cut straight across it. Private, punctual, and far more scenic than any taxi.</p>
+    <div class="flex flex-wrap gap-4 mt-10">
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book a Transfer</a>
+      <a href="#routes" style="display:inline-block;padding:13px 40px;background:transparent;color:#fdfcf8;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;border:1.5px solid rgba(253,252,248,0.4);text-decoration:none;" onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='rgba(253,252,248,0.4)'">View Routes</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY BOAT -->
+<section class="py-24 px-8 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal text-center mb-16">
+      <div class="eyebrow justify-center"><span class="rule-short"></span>Why Go by Boat<span class="rule-short"></span></div>
+      <h2 class="font-display font-light text-ink-900" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.08;">The Road Goes Around.<br><em style="font-style:italic;">We Go Across.</em></h2>
+      <p style="font-family:'Inter',sans-serif;font-size:0.9rem;line-height:1.8;color:#5a5044;max-width:560px;margin:20px auto 0;">The Bay of Kotor is shaped like a folded map. By land, every destination requires a long drive around the water's edge — through traffic, narrow mountain roads, and summer gridlock. By sea, you arrive in minutes, and the journey itself is the experience.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div class="why-card reveal" style="transition-delay:0.05s;">
+        <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:#c9a96e;letter-spacing:-0.02em;line-height:1;margin-bottom:12px;">3×</div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;color:#3a3328;margin-bottom:8px;">Faster on Average</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.7;color:#9a8f82;">A boat transfer from Tivat to Herceg Novi takes 30 minutes. By road in summer? Over 90.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.1s;">
+        <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:#c9a96e;letter-spacing:-0.02em;line-height:1;margin-bottom:12px;">0</div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;color:#3a3328;margin-bottom:8px;">Traffic, Ever</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.7;color:#9a8f82;">No roundabouts, no summer queues, no waiting at the Kamenari ferry. The sea is always open.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.15s;">
+        <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:#c9a96e;letter-spacing:-0.02em;line-height:1;margin-bottom:12px;">∞</div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;color:#3a3328;margin-bottom:8px;">More Comfortable</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.7;color:#9a8f82;">Air on your face, mountains on the horizon, water beneath you. No comparison to a back seat on a winding road.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.2s;">
+        <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:#c9a96e;letter-spacing:-0.02em;line-height:1;margin-bottom:12px;">1</div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;color:#3a3328;margin-bottom:8px;">Boat. Just You.</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.7;color:#9a8f82;">Private, door-to-dock. No shared rides, no strangers, no schedule that isn't yours.</p>
+      </div>
+    </div>
+
+    <!-- Side by side image -->
+    <div class="reveal grid lg:grid-cols-2 gap-6" style="transition-delay:0.1s;">
+      <div style="overflow:hidden;height:360px;">
+        <img src="brand_assets/a5.jpg" alt="Sea transfer" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+      </div>
+      <div style="overflow:hidden;height:360px;">
+        <img src="brand_assets/c5.JPG" alt="Sea transfer" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTES TABLE -->
+<section id="routes" class="py-24 px-8 lg:px-14" style="background:#f8f4ec;">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal text-center mb-16">
+      <div class="eyebrow justify-center"><span class="rule-short"></span>Transfer Times from Tivat<span class="rule-short"></span></div>
+      <h2 class="font-display font-light text-ink-900" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.08;">Popular Routes</h2>
+      <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#9a8f82;margin-top:12px;">Approximate times at cruising speed. All departures from Tivat Marina / Porto Montenegro.</p>
+    </div>
+
+    <div class="reveal" style="background:#fdfcf8;border:1px solid rgba(201,169,110,0.15);overflow:hidden;">
+      <!-- Table header -->
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:24px;padding:16px 28px;background:#1b1b1b;">
+        <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,169,110,0.7);">Destination</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,169,110,0.7);text-align:center;white-space:nowrap;">By Boat</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,169,110,0.7);text-align:center;white-space:nowrap;">By Road</div>
+      </div>
+
+      <div style="padding:0 28px;">
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Tivat Airport</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Porto Montenegro dock-side drop-off</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">10 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~30 min</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Kotor Old Town</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">UNESCO World Heritage waterfront</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">30 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~60 min</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Porto Novi</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Lustica peninsula resort & marina</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">20 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~60 min</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Rose</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Quiet fishing village at the bay entrance</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">30 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~80 min</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Herceg Novi</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Old town at the entrance of the bay</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">30 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~40 min</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Mamula</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Historic island fortress at the bay mouth</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">40 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">Not accessible</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Kamenari</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Bay crossing point & ferry terminal</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">15 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~30 min</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Žanjice</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Secluded beach on the Lustica peninsula</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">45 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~75 min</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Krtole</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Village on the Lustica coast</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">15 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~40 min</div>
+          </div>
+        </div>
+
+        <div class="transfer-row">
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;color:#3a3328;">Perast</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;margin-top:2px;">Baroque village & Our Lady of the Rocks</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a96e;letter-spacing:-0.01em;">20 min</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:#b5ac9f;">~60 min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#b5ac9f;margin-top:16px;text-align:center;transition-delay:0.1s;">Times are approximate and may vary with weather and sea conditions. Road times reflect typical summer traffic.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 px-8 lg:px-14" style="background:#1b1b1b;">
+  <div class="max-w-7xl mx-auto text-center reveal">
+    <div class="eyebrow justify-center" style="color:rgba(201,169,110,0.8);"><span class="rule-short"></span>Book Your Transfer<span class="rule-short"></span></div>
+    <h2 class="font-display font-light text-white mb-6" style="font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-0.03em;line-height:1.08;">Tell Us Where<br><em style="font-style:italic;">You Need to Be</em></h2>
+    <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:rgba(255,255,255,0.45);max-width:460px;margin:0 auto 40px;line-height:1.8;">Message us with your destination, date, and number of passengers and we'll confirm your transfer immediately.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book on WhatsApp</a>
+      <a href="index.html#contact" style="display:inline-block;padding:13px 40px;background:transparent;color:rgba(255,255,255,0.6);font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.2);text-decoration:none;" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">Send an Enquiry</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#141414;padding:32px 0;border-top:1px solid rgba(201,169,110,0.1);">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2);">&copy; 2026 Celestial Charter. All rights reserved.</p>
+    <a href="index.html#services" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(201,169,110,0.5);text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(201,169,110,0.5)'">← What We Offer</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ham').addEventListener('click', () => document.getElementById('mob-menu').classList.toggle('is-open'));
+  const obs = new IntersectionObserver(e => e.forEach(el => { if (el.isIntersecting) el.target.classList.add('in'); }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

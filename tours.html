@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guided Tours — Celestial Charter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#d4b483', DEFAULT: '#c9a96e', dark: '#a18756' },
+            cream: { 50: '#fdfcf8', 100: '#f8f4ec' },
+            ink: { 900: '#1a1712', 700: '#3a3328', 600: '#5a5044', 400: '#9a8f82' },
+          },
+          fontFamily: { display: ['Cormorant Garamond', 'Georgia', 'serif'], body: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fdfcf8; color: #3a3328; }
+    .rule-short { display: inline-block; width: 48px; height: 1px; background: #c9a96e; vertical-align: middle; }
+    #nav { background: rgba(253,252,248,0.97); box-shadow: 0 1px 0 rgba(201,169,110,0.2); }
+    .btn-gold { display: inline-block; padding: 14px 40px; background: #c9a96e; color: #fdfcf8; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; border: 1.5px solid #c9a96e; cursor: pointer; transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease; text-decoration: none; }
+    .btn-gold:hover { background: #a18756; border-color: #a18756; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(161,135,86,0.3); }
+    .eyebrow { display: flex; align-items: center; gap: 14px; font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: #c9a96e; margin-bottom: 20px; }
+    .nav-link { position: relative; font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #5a5044; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: #c9a96e; transition: width 0.3s ease; }
+    .nav-link:hover { color: #1a1712; }
+    .nav-link:hover::after { width: 100%; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .tour-card { background: #fdfcf8; border: 1px solid rgba(201,169,110,0.15); transition: border-color 0.3s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease; overflow: hidden; }
+    .tour-card:hover { border-color: rgba(201,169,110,0.5); transform: translateY(-6px); box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 16px 48px rgba(161,135,86,0.12); }
+    .tour-img { overflow: hidden; }
+    .tour-img img { transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); width:100%; height:100%; object-fit:cover; }
+    .tour-card:hover .tour-img img { transform: scale(1.05); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f8f4ec; }
+    ::-webkit-scrollbar-thumb { background: #c9a96e66; border-radius: 4px; }
+    /* ── Nav responsive fallback (works without Tailwind CDN) ── */
+    #mob-menu { display: none; }
+    #mob-menu.is-open { display: block; }
+    @media (max-width: 1023px) {
+      #nav-links { display: none !important; }
+      #nav-ctas  { display: none !important; }
+    }
+    @media (min-width: 1024px) {
+      #ham       { display: none !important; }
+      #nav-links { display: flex !important; align-items: center; gap: 2.5rem; }
+      #nav-ctas  { display: flex !important; align-items: center; gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex items-center justify-between h-20">
+    <a href="index.html"><img src="brand_assets/LOGO.png" alt="Celestial Charter" class="h-9 w-auto" /></a>
+    <nav id="nav-links" class="hidden lg:flex items-center gap-10">
+      <a href="index.html#story" class="nav-link">Our Story</a>
+      <a href="index.html#fleet" class="nav-link">The Fleet</a>
+      <a href="index.html#services" class="nav-link">What We Offer</a>
+      <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <div id="nav-ctas" class="hidden lg:flex items-center gap-5">
+      <a href="tel:+38267671705" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.12em;color:#7a6f62;text-decoration:none;">+382 67 671 705</a>
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Now</a>
+    </div>
+    <button id="ham" class="lg:hidden p-2 text-ink-700 focus-visible:outline-none" aria-label="Menu">
+      <svg width="22" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 22 16"><path d="M0 1h22M0 8h22M0 15h22" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="mob-menu" class="lg:hidden border-t border-gold/20" style="background:rgba(253,252,248,0.98);backdrop-filter:blur(20px);">
+    <ul class="px-8 py-6 space-y-5">
+      <li><a href="index.html#story" class="nav-link block py-1">Our Story</a></li>
+      <li><a href="index.html#fleet" class="nav-link block py-1">The Fleet</a></li>
+      <li><a href="index.html#services" class="nav-link block py-1">What We Offer</a></li>
+      <li><a href="index.html#testimonials" class="nav-link block py-1">Testimonials</a></li>
+      <li><a href="index.html#contact" class="nav-link block py-1">Contact</a></li>
+      <li class="pt-2"><a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold block text-center">Book Now</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative flex items-end" style="min-height:75vh;background:#0d1520;padding-top:80px;">
+  <div class="absolute inset-0">
+    <img src="brand_assets/perast-1.webp" alt="Guided Tours" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,21,32,0.88) 0%,rgba(13,21,32,0.3) 55%,rgba(13,21,32,0.05) 100%);"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-14 pb-20 w-full">
+    <a href="index.html#services" style="display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:32px;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">← What We Offer</a>
+    <div class="eyebrow" style="color:rgba(201,169,110,0.9);"><span class="rule-short"></span>Guided Tours</div>
+    <h1 class="font-display font-light text-white" style="font-size:clamp(3rem,8vw,6rem);letter-spacing:-0.03em;line-height:1;">The Bay of Kotor,<br><em style="font-style:italic;">Revealed</em></h1>
+    <p style="font-family:'Inter',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.8;margin-top:20px;">Hidden caves, Baroque churches on tiny islands, medieval walled cities — and a captain who knows the story behind every one of them.</p>
+  </div>
+</section>
+
+<!-- TOURS GRID -->
+<section class="py-24 px-8 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal text-center mb-16">
+      <div class="eyebrow justify-center"><span class="rule-short"></span>Choose Your Experience<span class="rule-short"></span></div>
+      <h2 class="font-display font-light text-ink-900" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.08;">Four Routes,<br><em style="font-style:italic;">Endless Memories</em></h2>
+    </div>
+
+    <!-- Tour 1: Blue Cave -->
+    <div class="tour-card reveal mb-8" style="transition-delay:0.05s;">
+      <div class="grid lg:grid-cols-2">
+        <div class="tour-img" style="height:400px;">
+          <img src="brand_assets/spilja2.webp" alt="Blue Cave Tour" style="object-position:center;">
+        </div>
+        <div class="p-10 lg:p-14 flex flex-col justify-center">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a96e;">Signature Tour</div>
+            <div style="width:1px;height:12px;background:rgba(201,169,110,0.3);"></div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#9a8f82;">3 Hours</div>
+          </div>
+          <h3 class="font-display font-light text-ink-900 mb-4" style="font-size:2rem;letter-spacing:-0.02em;line-height:1.1;">The Blue Cave</h3>
+          <p style="font-family:'Inter',sans-serif;font-size:0.9rem;line-height:1.8;color:#5a5044;margin-bottom:20px;">Montenegro's most spectacular sea cave glows an electric, otherworldly blue when sunlight refracts through its submerged entrance. We time our arrival for the best light, then anchor nearby for a swim in turquoise waters that feel like a secret the rest of the world hasn't found yet.</p>
+          <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#9a8f82;margin-bottom:10px;">Stops</div>
+          <ul style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.8;color:#9a8f82;margin-bottom:28px;list-style:none;padding:0;">
+            <li style="padding:6px 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;align-items:center;gap:10px;"><span style="display:inline-block;width:6px;height:6px;background:#c9a96e;border-radius:50%;flex-shrink:0;"></span>Blue Cave</li>
+            <li style="padding:6px 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;align-items:center;gap:10px;"><span style="display:inline-block;width:6px;height:6px;background:#c9a96e;border-radius:50%;flex-shrink:0;"></span>Lady of the Rocks</li>
+            <li style="padding:6px 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;align-items:center;gap:10px;"><span style="display:inline-block;width:6px;height:6px;background:#c9a96e;border-radius:50%;flex-shrink:0;"></span>Mamula</li>
+            <li style="padding:6px 0;display:flex;align-items:center;gap:10px;"><span style="display:inline-block;width:6px;height:6px;background:#c9a96e;border-radius:50%;flex-shrink:0;"></span>Submarine Tunnels</li>
+          </ul>
+          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="align-self:flex-start;">Book This Tour</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tour 2: Boka Bay -->
+    <div class="tour-card reveal mb-8" style="transition-delay:0.1s;">
+      <div class="grid lg:grid-cols-2">
+        <div class="p-10 lg:p-14 flex flex-col justify-center order-2 lg:order-1">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a96e;">Classic Route</div>
+            <div style="width:1px;height:12px;background:rgba(201,169,110,0.3);"></div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#9a8f82;">2 Hours</div>
+          </div>
+          <h3 class="font-display font-light text-ink-900 mb-4" style="font-size:2rem;letter-spacing:-0.02em;line-height:1.1;">Boka Bay</h3>
+          <p style="font-family:'Inter',sans-serif;font-size:0.9rem;line-height:1.8;color:#5a5044;margin-bottom:20px;">Often called Europe's southernmost fjord, the Bay of Kotor is ringed by mountains that plunge straight into the sea. We glide past Perast, pause at the floating baroque church of Our Lady of the Rocks, and wind through channels that feel like they belong to another century.</p>
+          <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#9a8f82;margin-bottom:10px;">Stops</div>
+          <ul style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.8;color:#9a8f82;margin-bottom:28px;list-style:none;padding:0;">
+            <li style="padding:6px 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;align-items:center;gap:10px;"><span style="display:inline-block;width:6px;height:6px;background:#c9a96e;border-radius:50%;flex-shrink:0;"></span>Lady of the Rocks</li>
+            <li style="padding:6px 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;align-items:center;gap:10px;"><span style="display:inline-block;width:6px;height:6px;background:#c9a96e;border-radius:50%;flex-shrink:0;"></span>Perast</li>
+            <li style="padding:6px 0;display:flex;align-items:center;gap:10px;"><span style="display:inline-block;width:6px;height:6px;background:#c9a96e;border-radius:50%;flex-shrink:0;"></span>Kotor</li>
+          </ul>
+          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="align-self:flex-start;">Book This Tour</a>
+        </div>
+        <div class="tour-img order-1 lg:order-2" style="height:400px;">
+          <img src="brand_assets/perast-1.webp" alt="Boka Bay Tour" style="object-position:center 40%;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tour 3: Half Day Escape -->
+    <div class="tour-card reveal mb-8" style="transition-delay:0.15s;">
+      <div class="grid lg:grid-cols-2">
+        <div class="tour-img" style="height:400px;">
+          <img src="brand_assets/gospa2.jpg" alt="Half Day Escape" style="object-position:center;">
+        </div>
+        <div class="p-10 lg:p-14 flex flex-col justify-center">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a96e;">Most Popular</div>
+            <div style="width:1px;height:12px;background:rgba(201,169,110,0.3);"></div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#9a8f82;">4–5 Hours</div>
+          </div>
+          <h3 class="font-display font-light text-ink-900 mb-4" style="font-size:2rem;letter-spacing:-0.02em;line-height:1.1;">Half Day Escape</h3>
+          <p style="font-family:'Inter',sans-serif;font-size:0.9rem;line-height:1.8;color:#5a5044;margin-bottom:20px;">Our most requested experience. A curated half-day that takes in the best of the bay and the outer coast — swimming coves, hidden tunnels, dramatic cliffs, and the kind of quiet anchorages you can only reach by boat. Enough time to truly disconnect, back before dinner.</p>
+          <ul style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.8;color:#9a8f82;margin-bottom:28px;list-style:none;padding:0;">
+            <li style="padding:4px 0;border-bottom:1px solid rgba(201,169,110,0.1);">⟶ Bay highlights + outer coast</li>
+            <li style="padding:4px 0;border-bottom:1px solid rgba(201,169,110,0.1);">⟶ 2 swimming stops</li>
+            <li style="padding:4px 0;">⟶ Route tailored on the day</li>
+          </ul>
+          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="align-self:flex-start;">Book This Tour</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tour 4: Sunset Lovers -->
+    <div class="tour-card reveal" style="transition-delay:0.2s;">
+      <div class="grid lg:grid-cols-2">
+        <div class="p-10 lg:p-14 flex flex-col justify-center order-2 lg:order-1">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a96e;">Evening Experience</div>
+            <div style="width:1px;height:12px;background:rgba(201,169,110,0.3);"></div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#9a8f82;">2–3 Hours</div>
+          </div>
+          <h3 class="font-display font-light text-ink-900 mb-4" style="font-size:2rem;letter-spacing:-0.02em;line-height:1.1;">Sunset Lovers</h3>
+          <p style="font-family:'Inter',sans-serif;font-size:0.9rem;line-height:1.8;color:#5a5044;margin-bottom:20px;">There is no better vantage point for a Montenegrin sunset than the open water. As the mountains turn amber and the bay mirrors the sky, you are exactly where you are supposed to be. Perfect for couples, celebrations, or simply the most beautiful end to a day you can imagine.</p>
+          <ul style="font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.8;color:#9a8f82;margin-bottom:28px;list-style:none;padding:0;">
+            <li style="padding:4px 0;border-bottom:1px solid rgba(201,169,110,0.1);">⟶ Departs 2h before sunset</li>
+            <li style="padding:4px 0;border-bottom:1px solid rgba(201,169,110,0.1);">⟶ Ideal for couples & special occasions</li>
+            <li style="padding:4px 0;">⟶ Champagne available on request</li>
+          </ul>
+          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="align-self:flex-start;">Book This Tour</a>
+        </div>
+        <div class="tour-img order-1 lg:order-2" style="height:400px;">
+          <img src="brand_assets/a1.jpg" alt="Sunset Lovers Tour" style="object-position:center;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 px-8 lg:px-14" style="background:#1b1b1b;">
+  <div class="max-w-7xl mx-auto text-center reveal">
+    <div class="eyebrow justify-center" style="color:rgba(201,169,110,0.8);"><span class="rule-short"></span>Reserve Your Tour<span class="rule-short"></span></div>
+    <h2 class="font-display font-light text-white mb-6" style="font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-0.03em;line-height:1.08;">The Bay is Waiting.<br><em style="font-style:italic;">Are You?</em></h2>
+    <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:rgba(255,255,255,0.45);max-width:440px;margin:0 auto 40px;line-height:1.8;">Message us on WhatsApp to check availability and secure your spot. Most tours can be booked for the following day.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book on WhatsApp</a>
+      <a href="index.html#contact" style="display:inline-block;padding:13px 40px;background:transparent;color:rgba(255,255,255,0.6);font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.2);text-decoration:none;" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">Send an Enquiry</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#141414;padding:32px 0;border-top:1px solid rgba(201,169,110,0.1);">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2);">&copy; 2026 Celestial Charter. All rights reserved.</p>
+    <a href="index.html#services" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(201,169,110,0.5);text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(201,169,110,0.5)'">← What We Offer</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ham').addEventListener('click', () => document.getElementById('mob-menu').classList.toggle('is-open'));
+  const obs = new IntersectionObserver(e => e.forEach(el => { if (el.isIntersecting) el.target.classList.add('in'); }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+node_modules/
+temporary screenshots/
+npm_install.txt
+npm_output.txt
+run_output.txt
+run.bat
+start-server.bat
+*.bat

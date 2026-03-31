@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celestial Charter — Luxury Private Yacht & Aviation Charters</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              light: '#d4b483',
+              DEFAULT: '#c9a96e',
+              dark: '#a18756',
+              deeper: '#8a6f3e',
+            },
+            cream: {
+              50: '#fdfcf8',
+              100: '#f8f4ec',
+              200: '#f0e9d8',
+              300: '#e5d8c0',
+            },
+            ink: {
+              900: '#1a1712',
+              800: '#262118',
+              700: '#3a3328',
+              600: '#5a5044',
+              500: '#7a6f62',
+              400: '#9a8f82',
+              300: '#b5ac9f',
+            },
+            charcoal: '#1b1b1b',
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ── Base ── */
+    * { -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fdfcf8; color: #3a3328; }
+
+    /* ── Gold rule ── */
+    .rule { display: block; height: 1px; background: linear-gradient(90deg, transparent, #c9a96e 40%, #c9a96e 60%, transparent); }
+    .rule-short { display: inline-block; width: 48px; height: 1px; background: #c9a96e; vertical-align: middle; }
+
+    /* ── Nav ── */
+    #nav { background: rgba(253,252,248,1); box-shadow: 0 1px 0 rgba(201,169,110,0.2); transition: background 0.4s ease, box-shadow 0.4s ease; }
+    #nav.scrolled { background: rgba(253,252,248,1); box-shadow: 0 1px 0 rgba(201,169,110,0.2); }
+
+    /* ── Buttons ── */
+    .btn-gold {
+      display: inline-block;
+      padding: 14px 40px;
+      background: #c9a96e;
+      color: #fdfcf8;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1.5px solid #c9a96e;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+    .btn-gold:hover { background: #a18756; border-color: #a18756; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(161,135,86,0.3); }
+    .btn-gold:active { transform: translateY(0); }
+    .btn-gold:focus-visible { outline: 2px solid #c9a96e; outline-offset: 3px; }
+
+    .btn-outline-gold {
+      display: inline-block;
+      padding: 13px 40px;
+      background: transparent;
+      color: #c9a96e;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1.5px solid #c9a96e;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-outline-gold:hover { background: #c9a96e; color: #fdfcf8; transform: translateY(-1px); }
+    .btn-outline-gold:active { transform: translateY(0); }
+    .btn-outline-gold:focus-visible { outline: 2px solid #c9a96e; outline-offset: 3px; }
+
+    .btn-outline-light {
+      display: inline-block;
+      padding: 13px 40px;
+      background: transparent;
+      color: #fdfcf8;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1.5px solid rgba(253,252,248,0.5);
+      cursor: pointer;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-outline-light:hover { border-color: #fdfcf8; background: rgba(253,252,248,0.1); transform: translateY(-1px); }
+    .btn-outline-light:active { transform: translateY(0); }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      display: flex; align-items: center; gap: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 20px;
+    }
+
+    /* ── Reveal animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ── Link hover underline ── */
+    .nav-link {
+      position: relative;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #5a5044;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; left: 0; bottom: -3px;
+      width: 0; height: 1px;
+      background: #c9a96e;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #1a1712; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:focus-visible { outline: 2px solid #c9a96e; outline-offset: 3px; }
+
+    /* ── Image hover zoom ── */
+    .img-zoom { overflow: hidden; }
+    .img-zoom img { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+    .img-zoom:hover img { transform: scale(1.05); }
+
+    /* ── Vessel card ── */
+    .vessel-card {
+      background: #fdfcf8;
+      border: 1px solid rgba(201,169,110,0.15);
+      transition: border-color 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    }
+    .vessel-card:hover {
+      border-color: rgba(201,169,110,0.5);
+      transform: translateY(-6px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 16px 48px rgba(161,135,86,0.12);
+    }
+
+    /* ── Marquee ── */
+    @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: scroll-left 30s linear infinite; display: flex; width: max-content; }
+
+    /* ── Grain overlay ── */
+    .grain-overlay::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      z-index: 2;
+    }
+
+    /* ── Star rating ── */
+    .stars { color: #c9a96e; letter-spacing: 2px; font-size: 0.75rem; }
+
+    /* ── Form ── */
+    .form-input {
+      width: 100%;
+      background: #fff;
+      border: 1px solid rgba(201,169,110,0.2);
+      color: #3a3328;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-input:focus { border-color: #c9a96e; box-shadow: 0 0 0 3px rgba(201,169,110,0.1); }
+    .form-input::placeholder { color: #b5ac9f; }
+    .form-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9a8f82;
+      margin-bottom: 8px;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f8f4ec; }
+    ::-webkit-scrollbar-thumb { background: #c9a96e66; border-radius: 4px; }
+
+    /* ── Nav responsive fallback (works without Tailwind CDN) ── */
+    #mob-menu { display: none; }
+    #mob-menu.is-open { display: block; }
+    @media (max-width: 1023px) {
+      #nav-links { display: none !important; }
+      #nav-ctas  { display: none !important; }
+    }
+    @media (min-width: 1024px) {
+      #ham       { display: none !important; }
+      #nav-links { display: flex !important; align-items: center; gap: 2.5rem; }
+      #nav-ctas  { display: flex !important; align-items: center; gap: 1.25rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex items-center justify-between h-20">
+
+    <a href="#" aria-label="Celestial Charter">
+      <img src="brand_assets/LOGO.png" alt="Celestial Charter" class="h-9 w-auto" />
+    </a>
+
+    <nav id="nav-links" class="hidden lg:flex items-center gap-10">
+      <a href="#story" class="nav-link">Our Story</a>
+      <a href="#fleet" class="nav-link">The Fleet</a>
+      <a href="#services" class="nav-link">What We Offer</a>
+      <a href="#testimonials" class="nav-link">Testimonials</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div id="nav-ctas" class="hidden lg:flex items-center gap-5">
+      <a href="tel:+38267671705" class="text-ink-500 text-xs tracking-widest hover:text-gold transition-colors duration-200" style="font-family:'Inter',sans-serif;">+382 67 671 705</a>
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Now</a>
+    </div>
+
+    <button id="ham" class="lg:hidden p-2 text-ink-700 hover:text-gold transition-colors duration-200 focus-visible:outline-none" aria-label="Menu">
+      <svg width="22" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 22 16">
+        <path d="M0 1h22M0 8h22M0 15h22" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mob-menu" class="lg:hidden border-t border-gold/20" style="background: rgba(253,252,248,0.98); backdrop-filter: blur(20px);">
+    <ul class="px-8 py-6 space-y-5">
+      <li><a href="#story" class="nav-link block py-1">Our Story</a></li>
+      <li><a href="#fleet" class="nav-link block py-1">The Fleet</a></li>
+      <li><a href="#services" class="nav-link block py-1">What We Offer</a></li>
+      <li><a href="#testimonials" class="nav-link block py-1">Testimonials</a></li>
+      <li><a href="#contact" class="nav-link block py-1">Contact</a></li>
+      <li class="pt-2"><a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold block text-center">Book Now</a></li>
+    </ul>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="relative min-h-screen flex items-end grain-overlay" style="background: #0d1520;">
+
+  <!-- Carousel background slides -->
+  <div class="absolute inset-0" style="z-index:0;">
+
+    <div class="c-slide" style="position:absolute; inset:0; opacity:1; transition: opacity 1s cubic-bezier(0.4,0,0.2,1);">
+      <img src="brand_assets/a1.jpg" alt="" aria-hidden="true" style="width:100%; height:100%; object-fit:cover; object-position:center 50%;">
+    </div>
+    <div class="c-slide" style="position:absolute; inset:0; opacity:0; transition: opacity 1s cubic-bezier(0.4,0,0.2,1);">
+      <img src="brand_assets/c1.JPG" alt="" aria-hidden="true" style="width:100%; height:100%; object-fit:cover; object-position:center 50%;">
+    </div>
+    <div class="c-slide" style="position:absolute; inset:0; opacity:0; transition: opacity 1s cubic-bezier(0.4,0,0.2,1);">
+      <img src="brand_assets/m3.JPG" alt="" aria-hidden="true" style="width:100%; height:100%; object-fit:cover; object-position:center 50%;">
+    </div>
+    <div class="c-slide" style="position:absolute; inset:0; opacity:0; transition: opacity 1s cubic-bezier(0.4,0,0.2,1);">
+      <img src="brand_assets/m2.JPG" alt="" aria-hidden="true" style="width:100%; height:100%; object-fit:cover; object-position:center 30%;">
+    </div>
+    <div class="c-slide" style="position:absolute; inset:0; opacity:0; transition: opacity 1s cubic-bezier(0.4,0,0.2,1);">
+      <img src="brand_assets/a6.jpg" alt="" aria-hidden="true" style="width:100%; height:100%; object-fit:cover; object-position:center 50%;">
+    </div>
+    <div class="c-slide" style="position:absolute; inset:0; opacity:0; transition: opacity 1s cubic-bezier(0.4,0,0.2,1);">
+      <img src="brand_assets/c2.JPG" alt="" aria-hidden="true" style="width:100%; height:100%; object-fit:cover; object-position:center 50%;">
+    </div>
+
+    <!-- Gradient overlays -->
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(13,21,32,0.88) 0%, rgba(13,21,32,0.45) 45%, rgba(13,21,32,0.15) 100%); z-index:1;"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 50% 80%, rgba(201,169,110,0.06) 0%, transparent 65%); z-index:1;"></div>
+  </div>
+
+  <!-- Hero content -->
+  <div class="relative w-full max-w-7xl mx-auto px-8 lg:px-14 pb-24 lg:pb-32" style="z-index:10;">
+    <div class="max-w-2xl">
+      <div class="eyebrow" style="color: rgba(201,169,110,0.85);">
+        <span class="rule-short" style="background: rgba(201,169,110,0.7);"></span>
+        Tivat · Boka Bay · Montenegro
+      </div>
+
+      <h1 class="font-display font-light text-white mb-6" style="font-size: clamp(3.5rem, 8vw, 6.5rem); letter-spacing: -0.03em; line-height: 1.02;">
+        Your Story Begins<br><em style="font-style: italic; color: #d4b483;">on the Water</em>
+      </h1>
+
+      <p class="mb-10 text-white/60" style="font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.8; max-width: 440px;">
+        Bespoke charters, curated tours &amp; seamless transfers across the jewel of the Adriatic
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Now</a>
+        <a href="#contact" class="btn-outline-light">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dot indicators -->
+  <div id="c-dots" style="position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); z-index:20; display:flex; gap:10px; align-items:center;">
+    <button class="c-dot" onclick="carouselGo(0)" style="width:28px; height:2px; border:none; cursor:pointer; background:#c9a96e; opacity:1; transition: opacity 0.3s, width 0.3s;"></button>
+    <button class="c-dot" onclick="carouselGo(1)" style="width:14px; height:2px; border:none; cursor:pointer; background:#c9a96e; opacity:0.35; transition: opacity 0.3s, width 0.3s;"></button>
+    <button class="c-dot" onclick="carouselGo(2)" style="width:14px; height:2px; border:none; cursor:pointer; background:#c9a96e; opacity:0.35; transition: opacity 0.3s, width 0.3s;"></button>
+    <button class="c-dot" onclick="carouselGo(3)" style="width:14px; height:2px; border:none; cursor:pointer; background:#c9a96e; opacity:0.35; transition: opacity 0.3s, width 0.3s;"></button>
+    <button class="c-dot" onclick="carouselGo(4)" style="width:14px; height:2px; border:none; cursor:pointer; background:#c9a96e; opacity:0.35; transition: opacity 0.3s, width 0.3s;"></button>
+    <button class="c-dot" onclick="carouselGo(5)" style="width:14px; height:2px; border:none; cursor:pointer; background:#c9a96e; opacity:0.35; transition: opacity 0.3s, width 0.3s;"></button>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 right-8 lg:right-14 z-10 flex flex-col items-center gap-2" style="opacity:0.45;">
+    <span style="font-family:'Inter',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:#fdfcf8;">Scroll</span>
+    <div style="width:1px; height:40px; background: linear-gradient(to bottom, #c9a96e, transparent);"></div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.c-slide');
+  const dots   = document.querySelectorAll('.c-dot');
+  let current = 0, total = slides.length, timer;
+
+  function showSlide(n) {
+    slides[current].style.opacity = '0';
+    dots[current].style.opacity   = '0.35';
+    dots[current].style.width     = '14px';
+    current = (n + total) % total;
+    slides[current].style.opacity = '1';
+    dots[current].style.opacity   = '1';
+    dots[current].style.width     = '28px';
+  }
+
+  window.carouselMove = function(dir){ clearInterval(timer); showSlide(current + dir); startAuto(); };
+  window.carouselGo   = function(n)  { clearInterval(timer); showSlide(n);             startAuto(); };
+
+  function startAuto(){ timer = setInterval(function(){ showSlide(current + 1); }, 5000); }
+  startAuto();
+})();
+</script>
+
+
+
+<!-- ═══════════════════════ INTRO STRIP ═══════════════════════ -->
+<section class="py-20 px-8 lg:px-14 bg-cream-100">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-3 gap-12 lg:gap-0 lg:divide-x divide-gold/20">
+
+      <div class="reveal text-center lg:px-12">
+        <div class="font-display font-light text-ink-900 mb-1" style="font-size: 3rem; letter-spacing: -0.03em; color: #c9a96e;">5<sup style="font-size:1.2rem; top:-1.2em; color:#c9a96e;">+</sup></div>
+        <div style="font-family:'Inter',sans-serif; font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:#9a8f82;">Years of Experience</div>
+      </div>
+
+      <div class="reveal text-center lg:px-12" style="transition-delay:0.1s;">
+        <div class="font-display font-light mb-1" style="font-size: 3rem; letter-spacing: -0.03em; color: #c9a96e;">500<sup style="font-size:1.2rem; top:-1.2em; color:#c9a96e;">+</sup></div>
+        <div style="font-family:'Inter',sans-serif; font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:#9a8f82;">Satisfied Clients</div>
+      </div>
+
+      <div class="reveal text-center lg:px-12" style="transition-delay:0.2s;">
+        <div class="font-display font-light mb-1" style="font-size: 3rem; letter-spacing: -0.03em; color: #c9a96e;">∞</div>
+        <div style="font-family:'Inter',sans-serif; font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:#9a8f82;">Memories Made</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ FLEET ═══════════════════════ -->
+<section id="fleet" class="py-28 px-8 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+      <div class="reveal">
+        <div class="eyebrow">
+          <span class="rule-short"></span>
+          Our Fleet
+        </div>
+        <h2 class="font-display font-light text-ink-900" style="font-size: clamp(2.2rem, 4.5vw, 3.2rem); letter-spacing: -0.03em; line-height: 1.08;">
+          Our Vessels,<br><em style="font-style:italic;">Your Adventure</em>
+        </h2>
+        <p class="mt-4" style="font-family:'Inter',sans-serif; font-size:0.9rem; line-height:1.8; color:#5a5044; max-width:380px;">
+          Every boat in our fleet is selected for quality, comfort, and character.
+        </p>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s;">
+        <a href="#contact" class="btn-outline-gold">Enquire</a>
+      </div>
+    </div>
+
+    <!-- Fleet grid -->
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="reveal vessel-card" style="transition-delay:0.04s;">
+        <div class="relative overflow-hidden" style="height:208px;">
+          <div class="mo-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/m1.JPG" alt="Molinete" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
+          </div>
+          <div class="mo-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/m2.JPG" alt="Molinete" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+          </div>
+          <div class="mo-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/m3.JPG" alt="Molinete" style="width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          </div>
+          <div class="mo-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/m4.JPG" alt="Molinete" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="mo-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/m5.JPG" alt="Molinete" style="width:100%;height:100%;object-fit:cover;object-position:center 72%;">
+          </div>
+          <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:5px;align-items:center;">
+            <button class="mo-dot" onclick="moGo(0)" style="width:18px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="moGo(1)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="moGo(2)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="moGo(3)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="moGo(4)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+          </div>
+        </div>
+        <div class="p-6">
+          <div style="font-family:'Inter',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:#c9a96e; margin-bottom:6px;">Open limousine</div>
+          <a href="molinete.html" style="text-decoration:none;"><h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.4rem; letter-spacing:-0.02em; transition:color 0.2s ease;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#1a1712'">Molinete</h4></a>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Length</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">7.5m</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Guests</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">12</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Speed</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">17–22 kn</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Engine</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">Inboard</div>
+            </div>
+          </div>
+          <div class="mt-5 flex gap-3 items-center">
+            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;">Book Now</a>
+            <a href="molinete.html" style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;text-decoration:none;white-space:nowrap;transition:color 0.2s ease;" onmouseover="this.style.color='#a18756'" onmouseout="this.style.color='#c9a96e'">Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal vessel-card" style="transition-delay:0.1s;">
+        <div class="relative overflow-hidden" style="height:208px;">
+          <div class="co-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/c1.JPG" alt="Corto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="co-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/c2.JPG" alt="Corto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="co-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/c3.JPG" alt="Corto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="co-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/c4.JPG" alt="Corto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="co-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/c5.JPG" alt="Corto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="co-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/c6.JPG" alt="Corto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:5px;align-items:center;">
+            <button class="co-dot" onclick="coGo(0)" style="width:18px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="coGo(1)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="coGo(2)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="coGo(3)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="coGo(4)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="coGo(5)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+          </div>
+        </div>
+        <div class="p-6">
+          <div style="font-family:'Inter',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:#c9a96e; margin-bottom:6px;">Open Speedboat</div>
+          <a href="corto.html" style="text-decoration:none;"><h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.4rem; letter-spacing:-0.02em; transition:color 0.2s ease;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#1a1712'">Corto</h4></a>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Length</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">6.2m</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Guests</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">6</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Speed</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">17–22 kn</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Engine</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">Inboard</div>
+            </div>
+          </div>
+          <div class="mt-5 flex gap-3 items-center">
+            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;">Book Now</a>
+            <a href="corto.html" style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;text-decoration:none;white-space:nowrap;transition:color 0.2s ease;" onmouseover="this.style.color='#a18756'" onmouseout="this.style.color='#c9a96e'">Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal vessel-card" style="transition-delay:0.16s;">
+        <div class="relative overflow-hidden" style="height:208px;">
+          <div class="ax-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/a1.jpg" alt="Axopar Brabus 29" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="ax-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/a2.jpg" alt="Axopar Brabus 29" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="ax-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/a3.jpg" alt="Axopar Brabus 29" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="ax-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/a4.jpg" alt="Axopar Brabus 29" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="ax-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/a5.jpg" alt="Axopar Brabus 29" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="ax-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/a6.jpg" alt="Axopar Brabus 29" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:5px;align-items:center;">
+            <button class="ax-dot" onclick="axGo(0)" style="width:18px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="axGo(1)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="axGo(2)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="axGo(3)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="axGo(4)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="axGo(5)" style="width:8px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+          </div>
+        </div>
+        <div class="p-6">
+          <div style="font-family:'Inter',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:#c9a96e; margin-bottom:6px;">Luxury Speedboat</div>
+          <a href="axopar.html" style="text-decoration:none;"><h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.4rem; letter-spacing:-0.02em; transition:color 0.2s ease;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#1a1712'">Axopar Brabus 29</h4></a>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Length</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">9.3m</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Guests</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">8</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Speed</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">18–24 kn</div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Engine</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#3a3328;">Outboard</div>
+            </div>
+          </div>
+          <div class="mt-5 flex gap-3 items-center">
+            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;">Book Now</a>
+            <a href="axopar.html" style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;text-decoration:none;white-space:nowrap;transition:color 0.2s ease;" onmouseover="this.style.color='#a18756'" onmouseout="this.style.color='#c9a96e'">Details →</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ SERVICES ═══════════════════════ -->
+<section id="services" class="py-28 px-8 lg:px-14 bg-cream-100">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="reveal text-center mb-16">
+      <div class="eyebrow justify-center">
+        <span class="rule-short"></span>
+        What We Offer
+        <span class="rule-short"></span>
+      </div>
+      <h2 class="font-display font-light text-ink-900" style="font-size: clamp(2.2rem, 4.5vw, 3.2rem); letter-spacing: -0.03em; line-height: 1.08;">
+        Tailored Maritime<br><em style="font-style:italic;">Experiences</em>
+      </h2>
+      <p class="mt-4 mx-auto" style="font-family:'Inter',sans-serif; font-size:0.9rem; line-height:1.8; color:#5a5044; max-width:480px;">
+        Every journey crafted to your desires on the Bay of Kotor.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Private Charter -->
+      <div class="reveal group cursor-pointer" style="transition-delay:0.05s;">
+        <div class="mb-6 relative overflow-hidden" style="height:224px;">
+          <!-- Mini carousel -->
+          <div class="pc-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/m3.JPG" alt="Private Charter" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
+          </div>
+          <div class="pc-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/c2.JPG" alt="Private Charter" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="pc-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/a1.jpg" alt="Private Charter" style="width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,21,32,0.5) 0%,transparent 50%);z-index:1;"></div>
+          <!-- Dot indicators -->
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:6px;align-items:center;">
+            <button class="pc-dot" onclick="pcGo(0)" style="width:20px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="pc-dot" onclick="pcGo(1)" style="width:10px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="pc-dot" onclick="pcGo(2)" style="width:10px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+          </div>
+        </div>
+        <div class="eyebrow" style="margin-bottom:10px;">
+          <span class="rule-short" style="width:24px;"></span>
+          Private Charter
+        </div>
+        <h3 class="font-display font-light text-ink-900 mb-3" style="font-size: 1.75rem; letter-spacing: -0.02em; line-height: 1.1;">Exclusive vessel hire on your terms.</h3>
+        <p class="mb-5" style="font-family:'Inter',sans-serif; font-size:0.875rem; line-height:1.8; color:#5a5044;">
+          Set your own course across the stunning Bay of Kotor.
+        </p>
+        <div style="display:flex;align-items:center;gap:20px;">
+          <a href="#contact" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9a96e; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition: gap 0.2s ease;" class="hover:gap-3">Enquire Now →</a>
+          <a href="charters.html" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#9a8f82;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#9a8f82'">Details →</a>
+        </div>
+      </div>
+
+      <!-- Scenic Tours -->
+      <div class="reveal group cursor-pointer" style="transition-delay:0.12s;">
+        <div class="mb-6 relative overflow-hidden" style="height:224px;">
+          <div class="st-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/spilja2.webp" alt="Scenic Tours" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="st-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/gospa2.jpg" alt="Scenic Tours" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="st-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/perast-1.webp" alt="Scenic Tours" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="st-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/tuneli2.jpeg" alt="Scenic Tours" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,21,32,0.5) 0%,transparent 50%);z-index:1;"></div>
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:6px;align-items:center;">
+            <button class="st-dot" onclick="stGo(0)" style="width:20px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="st-dot" onclick="stGo(1)" style="width:10px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="st-dot" onclick="stGo(2)" style="width:10px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="st-dot" onclick="stGo(3)" style="width:10px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+          </div>
+        </div>
+        <div class="eyebrow" style="margin-bottom:10px;">
+          <span class="rule-short" style="width:24px;"></span>
+          Scenic Tours
+        </div>
+        <h3 class="font-display font-light text-ink-900 mb-3" style="font-size: 1.75rem; letter-spacing: -0.02em; line-height: 1.1;">Guided day tours.</h3>
+        <p class="mb-5" style="font-family:'Inter',sans-serif; font-size:0.875rem; line-height:1.8; color:#5a5044;">
+          Hidden coves, Lady of the Rocks, Perast and Montenegro's finest coastal gems.
+        </p>
+        <div style="display:flex;align-items:center;gap:20px;">
+          <a href="#contact" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9a96e; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition: gap 0.2s ease;" class="hover:gap-3">Enquire Now →</a>
+          <a href="tours.html" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#9a8f82;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#9a8f82'">Details →</a>
+        </div>
+      </div>
+
+      <!-- Transfers & Events -->
+      <div class="reveal group cursor-pointer" style="transition-delay:0.2s;">
+        <div class="mb-6 relative overflow-hidden" style="height:224px;">
+          <div class="te-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/a6.jpg" alt="Transfers & Events" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="te-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/c6.JPG" alt="Transfers & Events" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="te-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
+            <img src="brand_assets/m4.JPG" alt="Transfers & Events" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,21,32,0.5) 0%,transparent 50%);z-index:1;"></div>
+          <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:6px;align-items:center;">
+            <button class="te-dot" onclick="teGo(0)" style="width:20px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="te-dot" onclick="teGo(1)" style="width:10px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+            <button class="te-dot" onclick="teGo(2)" style="width:10px;height:2px;border:none;cursor:pointer;background:#c9a96e;opacity:0.4;transition:opacity 0.3s,width 0.3s;padding:0;"></button>
+          </div>
+        </div>
+        <div class="eyebrow" style="margin-bottom:10px;">
+          <span class="rule-short" style="width:24px;"></span>
+          Transfers &amp; Events
+        </div>
+        <h3 class="font-display font-light text-ink-900 mb-3" style="font-size: 1.75rem; letter-spacing: -0.02em; line-height: 1.1;">Seamless sea transfers.</h3>
+        <p class="mb-5" style="font-family:'Inter',sans-serif; font-size:0.875rem; line-height:1.8; color:#5a5044;">
+          Exclusive corporate or private event hire across the Adriatic.
+        </p>
+        <div style="display:flex;align-items:center;gap:20px;">
+          <a href="#contact" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9a96e; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition: gap 0.2s ease;" class="hover:gap-3">Enquire Now →</a>
+          <a href="transfers.html" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#9a8f82;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#9a8f82'">Details →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ DESTINATIONS MARQUEE ═══════════════════════ -->
+<div class="py-6 bg-cream-100 border-y" style="border-color: rgba(201,169,110,0.15); overflow:hidden;">
+  <div class="marquee-track">
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Perast</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Boka Bay</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Blue Cave</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Submarine Tunnels</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Lustica Bay</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Porto Montenegro</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Kotor</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Tivat</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Lady of the Rocks</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Herceg Novi</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Mamula Island</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Dobrota</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Risan</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <!-- duplicate for seamless loop -->
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Perast</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Boka Bay</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Blue Cave</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Submarine Tunnels</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Lustica Bay</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Porto Montenegro</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Kotor</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Tivat</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Lady of the Rocks</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Herceg Novi</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Mamula Island</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Dobrota</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a8f82;padding:0 24px;">Risan</span>
+    <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;padding:0 24px;">·</span>
+  </div>
+</div>
+
+
+
+<!-- ═══════════════════════ OUR STORY ═══════════════════════ -->
+<section id="story" class="py-28 px-8 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-28 items-center">
+
+      <!-- Image -->
+      <div class="reveal img-zoom relative">
+        <img src="brand_assets/m2.JPG" alt="Celestial Charter vessel on Boka Bay" class="w-full h-[460px] lg:h-[580px] object-cover" style="object-position: 65% 40%;" />
+        <!-- Floating card -->
+        <div class="absolute -bottom-6 -right-0 lg:-right-10 p-7 z-10" style="background: #c9a96e; min-width: 200px;">
+          <div class="font-display text-white font-light" style="font-size: 2.4rem; letter-spacing: -0.03em; line-height: 1;">Est.</div>
+          <div class="font-display text-white font-light" style="font-size: 2.8rem; letter-spacing: -0.04em; line-height: 1;">2021</div>
+          <div class="mt-2" style="font-family:'Inter',sans-serif; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.7);">Tivat, Montenegro</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="reveal" style="transition-delay: 0.15s;">
+        <div class="eyebrow">
+          <span class="rule-short"></span>
+          Who We Are
+        </div>
+        <h2 class="font-display font-light text-ink-900 mb-6" style="font-size: clamp(2.2rem, 4vw, 3.2rem); letter-spacing: -0.03em; line-height: 1.08;">
+          Five Years Mastering<br><em style="font-style:italic;">Boka Bay</em>
+        </h2>
+        <p class="mb-5" style="font-family:'Inter',sans-serif; font-size:0.9375rem; line-height:1.8; color:#5a5044;">
+          Founded by passionate sailors with deep roots in Montenegro, Celestial Charter was built on one belief: every journey on the sea should feel extraordinary. What started as a single vessel and a shared passion has grown into Tivat's premier luxury charter company.
+        </p>
+        <p class="mb-10" style="font-family:'Inter',sans-serif; font-size:0.9375rem; line-height:1.8; color:#5a5044;">
+          Over five years, we have carefully built a fleet of own and partner vessels, assembled an experienced crew with unmatched local knowledge, and hosted hundreds of guests who return season after season.
+        </p>
+
+        <ul class="space-y-4 mb-10">
+          <li class="flex items-start gap-4">
+            <div style="width:20px; height:20px; border:1px solid #c9a96e; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">
+              <div style="width:6px; height:6px; background:#c9a96e;"></div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif; font-size:0.875rem; font-weight:500; color:#1a1712; margin-bottom:2px;">Based in Tivat — home of Porto Montenegro</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div style="width:20px; height:20px; border:1px solid #c9a96e; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">
+              <div style="width:6px; height:6px; background:#c9a96e;"></div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif; font-size:0.875rem; font-weight:500; color:#1a1712; margin-bottom:2px;">Own fleet plus handpicked partner vessels</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div style="width:20px; height:20px; border:1px solid #c9a96e; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">
+              <div style="width:6px; height:6px; background:#c9a96e;"></div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif; font-size:0.875rem; font-weight:500; color:#1a1712; margin-bottom:2px;">Licensed, certified crew with deep local expertise</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div style="width:20px; height:20px; border:1px solid #c9a96e; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">
+              <div style="width:6px; height:6px; background:#c9a96e;"></div>
+            </div>
+            <div>
+              <div style="font-family:'Inter',sans-serif; font-size:0.875rem; font-weight:500; color:#1a1712; margin-bottom:2px;">Available 7 days a week, 9am – 9pm</div>
+            </div>
+          </li>
+        </ul>
+
+        <a href="#contact" class="btn-outline-gold">Begin Your Story</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
+<section id="testimonials" class="py-28 px-8 lg:px-14 bg-cream-100">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="reveal text-center mb-16">
+      <div class="eyebrow justify-center">
+        <span class="rule-short"></span>
+        Testimonials
+        <span class="rule-short"></span>
+      </div>
+      <h2 class="font-display font-light text-ink-900" style="font-size: clamp(2.2rem, 4.5vw, 3.2rem); letter-spacing: -0.03em; line-height: 1.08;">
+        What Our<br><em style="font-style:italic;">Guests Say</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <div class="reveal bg-white p-10" style="border:1px solid rgba(201,169,110,0.12); transition-delay:0.05s; box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(161,135,86,0.06);">
+        <div class="stars mb-5">★ ★ ★ ★ ★</div>
+        <blockquote class="font-display font-light text-ink-800 mb-7" style="font-size:1.2rem; line-height:1.65; font-style:italic;">
+          "What an absolute fantastic way to visit Boka Bay. Celestial Charter made our last day in Tivat a truly unique experience — from swimming near St Marko island to visiting Lady of the Rocks and Perast."
+        </blockquote>
+        <div style="height:1px; background: rgba(201,169,110,0.2); margin-bottom: 20px;"></div>
+        <div class="flex items-center gap-4">
+          <img src="https://placehold.co/48x48/d4c4a8/8a6f3e?text=MK" alt="Milica Kurtic" class="w-11 h-11 object-cover rounded-full" />
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#1a1712;">Milica Kurtic</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;letter-spacing:0.05em;">Guest</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal bg-white p-10" style="border:1px solid rgba(201,169,110,0.12); transition-delay:0.12s; box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(161,135,86,0.06);">
+        <div class="stars mb-5">★ ★ ★ ★ ★</div>
+        <blockquote class="font-display font-light text-ink-800 mb-7" style="font-size:1.2rem; line-height:1.65; font-style:italic;">
+          "We used Celestial Charter for a private boat day and couldn't have been more impressed. Perfect itinerary, drinks, snorkelling equipment and a SUP board. Skipper Djordje was brilliant company."
+        </blockquote>
+        <div style="height:1px; background: rgba(201,169,110,0.2); margin-bottom: 20px;"></div>
+        <div class="flex items-center gap-4">
+          <img src="https://placehold.co/48x48/c4d4c0/3a5a3a?text=JK" alt="James Richard Kent" class="w-11 h-11 object-cover rounded-full" />
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:#1a1712;">James Richard Kent</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#9a8f82;letter-spacing:0.05em;">Guest</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+<section id="contact" class="py-28 px-8 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-28">
+
+      <!-- Left info -->
+      <div class="reveal">
+        <div class="eyebrow">
+          <span class="rule-short"></span>
+          Get in Touch
+        </div>
+        <h2 class="font-display font-light text-ink-900 mb-6" style="font-size: clamp(2.2rem, 4vw, 3.2rem); letter-spacing: -0.03em; line-height: 1.08;">
+          Your Journey<br><em style="font-style:italic;">Begins Here</em>
+        </h2>
+
+
+        <ul class="space-y-7">
+          <li class="flex items-start gap-5">
+            <div style="width:44px;height:44px;border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="form-label" style="margin-bottom:4px;">Phone</div>
+              <a href="tel:+38267671705" style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:#3a3328;text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#3a3328'">+382 67 671 705</a>
+            </div>
+          </li>
+          <li class="flex items-start gap-5">
+            <div style="width:44px;height:44px;border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#c9a96e"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.413A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.952 7.952 0 01-4.278-1.248l-.306-.183-3.164.898.899-3.09-.2-.317A7.952 7.952 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" fill="#c9a96e"/></svg>
+            </div>
+            <div>
+              <div class="form-label" style="margin-bottom:4px;">WhatsApp</div>
+              <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:#3a3328;text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#3a3328'">Message us on WhatsApp</a>
+            </div>
+          </li>
+          <li class="flex items-start gap-5">
+            <div style="width:44px;height:44px;border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="form-label" style="margin-bottom:4px;">Email</div>
+              <a href="mailto:djordje@celestialcharter.com" style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:#3a3328;text-decoration:none;">djordje@celestialcharter.com</a>
+            </div>
+          </li>
+          <li class="flex items-start gap-5">
+            <div style="width:44px;height:44px;border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="form-label" style="margin-bottom:4px;">Address</div>
+              <div style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:#3a3328;line-height:1.6;">1b Luke Tomanovića, 85320<br>Tivat, Montenegro</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right form -->
+      <div class="reveal" style="transition-delay:0.15s;">
+        <form onsubmit="return false;" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label">First Name</label>
+              <input type="text" placeholder="Alexandra" class="form-input" />
+            </div>
+            <div>
+              <label class="form-label">Last Name</label>
+              <input type="text" placeholder="Montenegro" class="form-input" />
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Email Address</label>
+            <input type="email" placeholder="alexandra@example.com" class="form-input" />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label">Preferred Dates</label>
+              <input type="text" placeholder="e.g. June 2026" class="form-input" />
+            </div>
+            <div>
+              <label class="form-label">Type of Service</label>
+              <select class="form-input" style="color:#3a3328;">
+                <option value="">Select service…</option>
+                <option>Charters</option>
+                <option>Tours</option>
+                <option>Transfers</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Your Vision</label>
+            <textarea rows="4" placeholder="Tell us about your ideal journey, destination, group size, and any special requirements…" class="form-input" style="resize:none;"></textarea>
+          </div>
+          <button type="submit" class="btn-gold w-full" style="text-align:center;">Send Enquiry</button>
+          <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#b5ac9f;text-align:center;line-height:1.6;">All enquiries are handled with complete discretion and privacy.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer style="background:#1b1b1b;" class="px-8 lg:px-14 pt-20 pb-10">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid lg:grid-cols-4 gap-12 mb-16">
+
+      <div class="lg:col-span-2">
+        <img src="brand_assets/LOGO.png" alt="Celestial Charter" class="h-9 w-auto mb-6" style="filter: brightness(0) invert(1); opacity:0.85;" />
+        <p class="mb-8" style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:rgba(255,255,255,0.4);max-width:300px;">
+          Crafting the world's most extraordinary private charter experiences since 2001. Based in Monaco. Operating globally.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" aria-label="Instagram" style="width:38px;height:38px;border:1px solid rgba(201,169,110,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s ease,background 0.2s ease;" class="hover:border-gold-500/60 hover:bg-gold/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+            <svg width="15" height="15" fill="none" stroke="rgba(201,169,110,0.6)" stroke-width="1.4" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" style="width:38px;height:38px;border:1px solid rgba(201,169,110,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s ease,background 0.2s ease;" class="hover:border-gold-500/60 hover:bg-gold/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+            <svg width="15" height="15" fill="none" stroke="rgba(201,169,110,0.6)" stroke-width="1.4" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="X" style="width:38px;height:38px;border:1px solid rgba(201,169,110,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s ease,background 0.2s ease;" class="hover:border-gold-500/60 hover:bg-gold/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+            <svg width="14" height="14" fill="rgba(201,169,110,0.6)" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px;">Navigation</h4>
+        <ul class="space-y-3">
+          <li><a href="#story" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s ease;" class="hover:text-white">Our Story</a></li>
+          <li><a href="#fleet" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s ease;" class="hover:text-white">The Fleet</a></li>
+          <li><a href="#services" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s ease;" class="hover:text-white">Services</a></li>
+          <li><a href="#testimonials" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s ease;" class="hover:text-white">Testimonials</a></li>
+          <li><a href="#contact" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s ease;" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px;">Contact</h4>
+        <ul class="space-y-3">
+          <li><a href="tel:+38267671705" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s ease;" class="hover:text-gold">+382 67 671 705</a></li>
+          <li><a href="mailto:djordje@celestialcharter.com" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s ease;" class="hover:text-gold">djordje@celestialcharter.com</a></li>
+          <li style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.35);line-height:1.6;">1b Luke Tomanovića, 85320<br>Tivat, Montenegro</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Gold rule -->
+    <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,110,0.25) 40%,rgba(201,169,110,0.25) 60%,transparent);margin-bottom:24px;"></div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2);">&copy; 2026 Celestial Charter. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s ease;" class="hover:text-white/50">Privacy Policy</a>
+        <a href="#" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s ease;" class="hover:text-white/50">Terms</a>
+        <a href="#" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s ease;" class="hover:text-white/50">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Mobile menu
+  document.getElementById('ham').addEventListener('click', () => {
+    document.getElementById('mob-menu').classList.toggle('is-open');
+  });
+  document.querySelectorAll('#mob-menu a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('mob-menu').classList.remove('is-open'));
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
+  // Private Charter carousel
+  (function(){
+    var slides = document.querySelectorAll('.pc-slide');
+    var dots   = document.querySelectorAll('.pc-dot');
+    var current = 0, total = slides.length, timer;
+    function showSlide(n) {
+      slides[current].style.opacity = '0'; dots[current].style.opacity = '0.4'; dots[current].style.width = '10px';
+      current = (n + total) % total;
+      slides[current].style.opacity = '1'; dots[current].style.opacity = '1'; dots[current].style.width = '20px';
+    }
+    window.pcGo = function(n){ clearInterval(timer); showSlide(n); timer = setInterval(function(){ showSlide(current + 1); }, 3000); };
+    timer = setInterval(function(){ showSlide(current + 1); }, 3000);
+  })();
+
+  // Scenic Tours carousel
+  (function(){
+    var slides = document.querySelectorAll('.st-slide');
+    var dots   = document.querySelectorAll('.st-dot');
+    var current = 0, total = slides.length, timer;
+    function showSlide(n) {
+      slides[current].style.opacity = '0'; dots[current].style.opacity = '0.4'; dots[current].style.width = '10px';
+      current = (n + total) % total;
+      slides[current].style.opacity = '1'; dots[current].style.opacity = '1'; dots[current].style.width = '20px';
+    }
+    window.stGo = function(n){ clearInterval(timer); showSlide(n); timer = setInterval(function(){ showSlide(current + 1); }, 3000); };
+    timer = setInterval(function(){ showSlide(current + 1); }, 3000);
+  })();
+
+  // Molinete vessel carousel
+  (function(){
+    var slides = document.querySelectorAll('.mo-slide');
+    var dots   = document.querySelectorAll('.mo-dot');
+    var current = 0, total = slides.length, timer;
+    function showSlide(n) {
+      slides[current].style.opacity = '0'; dots[current].style.opacity = '0.4'; dots[current].style.width = '8px';
+      current = (n + total) % total;
+      slides[current].style.opacity = '1'; dots[current].style.opacity = '1'; dots[current].style.width = '18px';
+    }
+    window.moGo = function(n){ clearInterval(timer); showSlide(n); timer = setInterval(function(){ showSlide(current + 1); }, 3000); };
+    timer = setInterval(function(){ showSlide(current + 1); }, 3000);
+  })();
+
+  // Corto vessel carousel
+  (function(){
+    var slides = document.querySelectorAll('.co-slide');
+    var dots   = document.querySelectorAll('.co-dot');
+    var current = 0, total = slides.length, timer;
+    function showSlide(n) {
+      slides[current].style.opacity = '0'; dots[current].style.opacity = '0.4'; dots[current].style.width = '8px';
+      current = (n + total) % total;
+      slides[current].style.opacity = '1'; dots[current].style.opacity = '1'; dots[current].style.width = '18px';
+    }
+    window.coGo = function(n){ clearInterval(timer); showSlide(n); timer = setInterval(function(){ showSlide(current + 1); }, 3000); };
+    timer = setInterval(function(){ showSlide(current + 1); }, 3000);
+  })();
+
+  // Axopar Brabus 29 vessel carousel
+  (function(){
+    var slides = document.querySelectorAll('.ax-slide');
+    var dots   = document.querySelectorAll('.ax-dot');
+    var current = 0, total = slides.length, timer;
+    function showSlide(n) {
+      slides[current].style.opacity = '0'; dots[current].style.opacity = '0.4'; dots[current].style.width = '8px';
+      current = (n + total) % total;
+      slides[current].style.opacity = '1'; dots[current].style.opacity = '1'; dots[current].style.width = '18px';
+    }
+    window.axGo = function(n){ clearInterval(timer); showSlide(n); timer = setInterval(function(){ showSlide(current + 1); }, 3000); };
+    timer = setInterval(function(){ showSlide(current + 1); }, 3000);
+  })();
+
+  // Transfers & Events carousel
+  (function(){
+    var slides = document.querySelectorAll('.te-slide');
+    var dots   = document.querySelectorAll('.te-dot');
+    var current = 0, total = slides.length, timer;
+    function showSlide(n) {
+      slides[current].style.opacity = '0'; dots[current].style.opacity = '0.4'; dots[current].style.width = '10px';
+      current = (n + total) % total;
+      slides[current].style.opacity = '1'; dots[current].style.opacity = '1'; dots[current].style.width = '20px';
+    }
+    window.teGo = function(n){ clearInterval(timer); showSlide(n); timer = setInterval(function(){ showSlide(current + 1); }, 3000); };
+    timer = setInterval(function(){ showSlide(current + 1); }, 3000);
+  })();
+
+});
+</script>
+
+</body>
+</html>

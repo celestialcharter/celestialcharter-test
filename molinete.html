@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molinete — Celestial Charter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#d4b483', DEFAULT: '#c9a96e', dark: '#a18756', deeper: '#8a6f3e' },
+            cream: { 50: '#fdfcf8', 100: '#f8f4ec', 200: '#f0e9d8', 300: '#e5d8c0' },
+            ink: { 900: '#1a1712', 800: '#262118', 700: '#3a3328', 600: '#5a5044', 500: '#7a6f62', 400: '#9a8f82', 300: '#b5ac9f' },
+            charcoal: '#1b1b1b',
+          },
+          fontFamily: { display: ['Cormorant Garamond', 'Georgia', 'serif'], body: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fdfcf8; color: #3a3328; }
+    .rule-short { display: inline-block; width: 48px; height: 1px; background: #c9a96e; vertical-align: middle; }
+    #nav { background: rgba(253,252,248,0.97); box-shadow: 0 1px 0 rgba(201,169,110,0.2); }
+    .btn-gold { display: inline-block; padding: 14px 40px; background: #c9a96e; color: #fdfcf8; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; border: 1.5px solid #c9a96e; cursor: pointer; transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease; text-decoration: none; }
+    .btn-gold:hover { background: #a18756; border-color: #a18756; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(161,135,86,0.3); }
+    .btn-gold:active { transform: translateY(0); }
+    .btn-outline-gold { display: inline-block; padding: 13px 40px; background: transparent; color: #c9a96e; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; border: 1.5px solid #c9a96e; cursor: pointer; transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease; text-decoration: none; }
+    .btn-outline-gold:hover { background: #c9a96e; color: #fdfcf8; transform: translateY(-1px); }
+    .eyebrow { display: flex; align-items: center; gap: 14px; font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: #c9a96e; margin-bottom: 20px; }
+    .nav-link { position: relative; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: #5a5044; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: #c9a96e; transition: width 0.3s ease; }
+    .nav-link:hover { color: #1a1712; }
+    .nav-link:hover::after { width: 100%; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .spec-item { border-bottom: 1px solid rgba(201,169,110,0.12); padding: 18px 0; }
+    .spec-item:last-child { border-bottom: none; }
+    .gallery-thumb { overflow: hidden; cursor: pointer; }
+    .gallery-thumb img { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); width: 100%; height: 100%; object-fit: cover; }
+    .gallery-thumb:hover img { transform: scale(1.06); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f8f4ec; }
+    ::-webkit-scrollbar-thumb { background: #c9a96e66; border-radius: 4px; }
+    /* ── Nav responsive fallback (works without Tailwind CDN) ── */
+    #mob-menu { display: none; }
+    #mob-menu.is-open { display: block; }
+    @media (max-width: 1023px) {
+      #nav-links { display: none !important; }
+      #nav-ctas  { display: none !important; }
+    }
+    @media (min-width: 1024px) {
+      #ham       { display: none !important; }
+      #nav-links { display: flex !important; align-items: center; gap: 2.5rem; }
+      #nav-ctas  { display: flex !important; align-items: center; gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex items-center justify-between h-20">
+    <a href="index.html" aria-label="Celestial Charter">
+      <img src="brand_assets/LOGO.png" alt="Celestial Charter" class="h-9 w-auto" />
+    </a>
+    <nav id="nav-links" class="hidden lg:flex items-center gap-10">
+      <a href="index.html#story" class="nav-link">Our Story</a>
+      <a href="index.html#fleet" class="nav-link">The Fleet</a>
+      <a href="index.html#services" class="nav-link">What We Offer</a>
+      <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <div id="nav-ctas" class="hidden lg:flex items-center gap-5">
+      <a href="tel:+38267671705" class="text-ink-500 text-xs tracking-widest hover:text-gold transition-colors duration-200" style="font-family:'Inter',sans-serif;">+382 67 671 705</a>
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Now</a>
+    </div>
+    <button id="ham" class="lg:hidden p-2 text-ink-700 hover:text-gold transition-colors duration-200 focus-visible:outline-none" aria-label="Menu">
+      <svg width="22" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 22 16"><path d="M0 1h22M0 8h22M0 15h22" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="mob-menu" class="lg:hidden border-t border-gold/20" style="background: rgba(253,252,248,0.98); backdrop-filter: blur(20px);">
+    <ul class="px-8 py-6 space-y-5">
+      <li><a href="index.html#story" class="nav-link block py-1">Our Story</a></li>
+      <li><a href="index.html#fleet" class="nav-link block py-1">The Fleet</a></li>
+      <li><a href="index.html#services" class="nav-link block py-1">What We Offer</a></li>
+      <li><a href="index.html#testimonials" class="nav-link block py-1">Testimonials</a></li>
+      <li><a href="index.html#contact" class="nav-link block py-1">Contact</a></li>
+      <li class="pt-2"><a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold block text-center">Book Now</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative flex items-end" style="min-height:90vh; background:#0d1520; padding-top:80px;">
+  <div class="absolute inset-0">
+    <img src="brand_assets/m3.JPG" alt="Molinete" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,21,32,0.85) 0%, rgba(13,21,32,0.3) 50%, rgba(13,21,32,0.1) 100%);"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-14 pb-20 w-full">
+    <a href="index.html#fleet" style="display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:32px;transition:color 0.2s ease;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+      ← Back to Fleet
+    </a>
+    <div class="eyebrow" style="color:rgba(201,169,110,0.9);">
+      <span class="rule-short"></span>
+      Open Limousine
+    </div>
+    <h1 class="font-display font-light text-white" style="font-size:clamp(3rem,8vw,6rem);letter-spacing:-0.03em;line-height:1;">Molinete</h1>
+    <p style="font-family:'Inter',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:480px;line-height:1.8;margin-top:20px;">A classic open limousine built for elegance on the Adriatic. Perfect for groups seeking comfort, style, and freedom on the water.</p>
+    <div class="flex flex-wrap gap-4 mt-10">
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Now</a>
+      <a href="#gallery" class="btn-outline-light" style="display:inline-block;padding:13px 40px;background:transparent;color:#fdfcf8;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;border:1.5px solid rgba(253,252,248,0.5);text-decoration:none;transition:border-color 0.25s ease,background 0.25s ease,transform 0.2s ease;" onmouseover="this.style.borderColor='#fdfcf8';this.style.background='rgba(253,252,248,0.1)'" onmouseout="this.style.borderColor='rgba(253,252,248,0.5)';this.style.background='transparent'">View Gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS BAR -->
+<div style="background:#1b1b1b;padding:28px 0;">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div style="text-align:center;border-right:1px solid rgba(201,169,110,0.15);">
+        <div style="font-family:'Inter',sans-serif;font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:6px;">Length</div>
+        <div class="font-display" style="font-size:2rem;font-weight:300;color:#fdfcf8;letter-spacing:-0.02em;">7.5m</div>
+      </div>
+      <div style="text-align:center;border-right:1px solid rgba(201,169,110,0.15);">
+        <div style="font-family:'Inter',sans-serif;font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:6px;">Guests</div>
+        <div class="font-display" style="font-size:2rem;font-weight:300;color:#fdfcf8;letter-spacing:-0.02em;">12</div>
+      </div>
+      <div style="text-align:center;border-right:1px solid rgba(201,169,110,0.15);">
+        <div style="font-family:'Inter',sans-serif;font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:6px;">Speed</div>
+        <div class="font-display" style="font-size:2rem;font-weight:300;color:#fdfcf8;letter-spacing:-0.02em;">22kn</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Inter',sans-serif;font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:6px;">Engine</div>
+        <div class="font-display" style="font-size:2rem;font-weight:300;color:#fdfcf8;letter-spacing:-0.02em;">Inboard</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT + SPECS -->
+<section class="py-24 px-8 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-20">
+      <!-- Description -->
+      <div class="reveal">
+        <div class="eyebrow"><span class="rule-short"></span>The Vessel</div>
+        <h2 class="font-display font-light text-ink-900 mb-6" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.08;">Effortless Style,<br><em style="font-style:italic;">Open Waters</em></h2>
+        <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;line-height:1.8;color:#5a5044;margin-bottom:20px;">The Molinete is a beautifully crafted open limousine boat that blends traditional Mediterranean design with modern comfort. With seating for up to 12 guests, she is ideal for private day charters, sunset cruises, and island-hopping along the Bay of Kotor.</p>
+        <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;line-height:1.8;color:#5a5044;">Her spacious open deck invites conversation and connection, while the inboard engine delivers smooth, quiet power across calm Adriatic waters. Whether you're celebrating a special occasion or simply exploring the coastline, the Molinete offers an unmatched on-water experience.</p>
+      </div>
+      <!-- Specs -->
+      <div class="reveal" style="transition-delay:0.12s;">
+        <div class="eyebrow"><span class="rule-short"></span>Full Specifications</div>
+        <div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Type</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">Open Limousine</span>
+          </div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Length</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">7.5 m</span>
+          </div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Max Guests</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">12 persons</span>
+          </div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Cruising Speed</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">17 – 22 kn</span>
+          </div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Engine Type</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">Inboard</span>
+          </div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Deck Layout</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">Open deck</span>
+          </div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Ideal For</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">Groups, events, cruises</span>
+          </div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Fuel Consumption</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">~30 L/h</span>
+          </div>
+          <div class="spec-item flex justify-between items-center">
+            <span style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a8f82;">Home Port</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:#3a3328;">Tivat, Montenegro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="py-24 px-8 lg:px-14" style="background:#f8f4ec;">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal">
+      <div class="eyebrow"><span class="rule-short"></span>Gallery</div>
+      <h2 class="font-display font-light text-ink-900 mb-12" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.08;">On the Water</h2>
+    </div>
+    <!-- Main large image -->
+    <div class="reveal gallery-thumb mb-4" style="height:520px;transition-delay:0.04s;">
+      <img src="brand_assets/m1.JPG" alt="Molinete" style="object-position:center 60%;">
+    </div>
+    <!-- 2-col row -->
+    <div class="grid grid-cols-2 gap-4 mb-4">
+      <div class="reveal gallery-thumb" style="height:320px;transition-delay:0.08s;">
+        <img src="brand_assets/m2.JPG" alt="Molinete" style="object-position:center 40%;">
+      </div>
+      <div class="reveal gallery-thumb" style="height:320px;transition-delay:0.12s;">
+        <img src="brand_assets/m3.JPG" alt="Molinete" style="object-position:center 50%;">
+      </div>
+    </div>
+    <!-- 3-col row -->
+    <div class="grid grid-cols-3 gap-4">
+      <div class="reveal gallery-thumb" style="height:240px;transition-delay:0.16s;">
+        <img src="brand_assets/m4.JPG" alt="Molinete" style="object-position:center;">
+      </div>
+      <div class="reveal gallery-thumb col-span-2" style="height:240px;transition-delay:0.2s;">
+        <img src="brand_assets/m5.JPG" alt="Molinete" style="object-position:center 72%;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 px-8 lg:px-14" style="background:#1b1b1b;">
+  <div class="max-w-7xl mx-auto text-center reveal">
+    <div class="eyebrow justify-center" style="color:rgba(201,169,110,0.8);"><span class="rule-short"></span>Reserve Your Day<span class="rule-short"></span></div>
+    <h2 class="font-display font-light text-white mb-6" style="font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-0.03em;line-height:1.08;">Ready to Set Sail<br><em style="font-style:italic;">on the Molinete?</em></h2>
+    <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:rgba(255,255,255,0.45);max-width:440px;margin:0 auto 40px;line-height:1.8;">Contact us via WhatsApp to check availability, ask questions, or book your charter today.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book on WhatsApp</a>
+      <a href="index.html#fleet" style="display:inline-block;padding:13px 40px;background:transparent;color:rgba(255,255,255,0.6);font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.2);text-decoration:none;transition:border-color 0.25s ease,color 0.25s ease;" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">View All Vessels</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#141414;padding:32px 0;border-top:1px solid rgba(201,169,110,0.1);">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2);">&copy; 2026 Celestial Charter. All rights reserved.</p>
+    <a href="index.html#fleet" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(201,169,110,0.5);text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(201,169,110,0.5)'">← Back to Fleet</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  document.getElementById('ham').addEventListener('click', () => {
+    document.getElementById('mob-menu').classList.toggle('is-open');
+  });
+  // Reveal on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

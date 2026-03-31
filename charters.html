@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Charters — Celestial Charter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#d4b483', DEFAULT: '#c9a96e', dark: '#a18756' },
+            cream: { 50: '#fdfcf8', 100: '#f8f4ec' },
+            ink: { 900: '#1a1712', 700: '#3a3328', 600: '#5a5044', 400: '#9a8f82', 300: '#b5ac9f' },
+          },
+          fontFamily: { display: ['Cormorant Garamond', 'Georgia', 'serif'], body: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fdfcf8; color: #3a3328; }
+    .rule-short { display: inline-block; width: 48px; height: 1px; background: #c9a96e; vertical-align: middle; }
+    #nav { background: rgba(253,252,248,0.97); box-shadow: 0 1px 0 rgba(201,169,110,0.2); }
+    .btn-gold { display: inline-block; padding: 14px 40px; background: #c9a96e; color: #fdfcf8; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; border: 1.5px solid #c9a96e; cursor: pointer; transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease; text-decoration: none; }
+    .btn-gold:hover { background: #a18756; border-color: #a18756; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(161,135,86,0.3); }
+    .eyebrow { display: flex; align-items: center; gap: 14px; font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: #c9a96e; margin-bottom: 20px; }
+    .nav-link { position: relative; font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #5a5044; text-decoration: none; transition: color 0.2s ease; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: #c9a96e; transition: width 0.3s ease; }
+    .nav-link:hover { color: #1a1712; }
+    .nav-link:hover::after { width: 100%; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .step-card { border-left: 2px solid rgba(201,169,110,0.3); padding-left: 28px; position: relative; }
+    .step-card::before { content: attr(data-step); position: absolute; left: -14px; top: 0; width: 26px; height: 26px; background: #c9a96e; color: #fdfcf8; font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 600; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f8f4ec; }
+    ::-webkit-scrollbar-thumb { background: #c9a96e66; border-radius: 4px; }
+    /* ── Nav responsive fallback (works without Tailwind CDN) ── */
+    #mob-menu { display: none; }
+    #mob-menu.is-open { display: block; }
+    @media (max-width: 1023px) {
+      #nav-links { display: none !important; }
+      #nav-ctas  { display: none !important; }
+    }
+    @media (min-width: 1024px) {
+      #ham       { display: none !important; }
+      #nav-links { display: flex !important; align-items: center; gap: 2.5rem; }
+      #nav-ctas  { display: flex !important; align-items: center; gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="nav" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex items-center justify-between h-20">
+    <a href="index.html"><img src="brand_assets/LOGO.png" alt="Celestial Charter" class="h-9 w-auto" /></a>
+    <nav id="nav-links" class="hidden lg:flex items-center gap-10">
+      <a href="index.html#story" class="nav-link">Our Story</a>
+      <a href="index.html#fleet" class="nav-link">The Fleet</a>
+      <a href="index.html#services" class="nav-link">What We Offer</a>
+      <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <div id="nav-ctas" class="hidden lg:flex items-center gap-5">
+      <a href="tel:+38267671705" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.12em;color:#7a6f62;text-decoration:none;">+382 67 671 705</a>
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Now</a>
+    </div>
+    <button id="ham" class="lg:hidden p-2 text-ink-700 focus-visible:outline-none" aria-label="Menu">
+      <svg width="22" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 22 16"><path d="M0 1h22M0 8h22M0 15h22" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="mob-menu" class="lg:hidden border-t border-gold/20" style="background:rgba(253,252,248,0.98);backdrop-filter:blur(20px);">
+    <ul class="px-8 py-6 space-y-5">
+      <li><a href="index.html#story" class="nav-link block py-1">Our Story</a></li>
+      <li><a href="index.html#fleet" class="nav-link block py-1">The Fleet</a></li>
+      <li><a href="index.html#services" class="nav-link block py-1">What We Offer</a></li>
+      <li><a href="index.html#testimonials" class="nav-link block py-1">Testimonials</a></li>
+      <li><a href="index.html#contact" class="nav-link block py-1">Contact</a></li>
+      <li class="pt-2"><a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold block text-center">Book Now</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative flex items-end" style="min-height:85vh;background:#0d1520;padding-top:80px;">
+  <div class="absolute inset-0">
+    <img src="brand_assets/m3.JPG" alt="Private Charter" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,21,32,0.88) 0%,rgba(13,21,32,0.35) 55%,rgba(13,21,32,0.1) 100%);"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-14 pb-20 w-full">
+    <a href="index.html#services" style="display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:32px;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">← What We Offer</a>
+    <div class="eyebrow" style="color:rgba(201,169,110,0.9);"><span class="rule-short"></span>Private Charter</div>
+    <h1 class="font-display font-light text-white" style="font-size:clamp(3rem,8vw,6rem);letter-spacing:-0.03em;line-height:1;">Your Charter,<br><em style="font-style:italic;">Your Rules</em></h1>
+    <p style="font-family:'Inter',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.8;margin-top:20px;">No fixed routes. No shared decks. Every detail of your voyage is planned around you — and only you.</p>
+    <div class="flex flex-wrap gap-4 mt-10">
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Now</a>
+      <a href="#how-it-works" style="display:inline-block;padding:13px 40px;background:transparent;color:#fdfcf8;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;border:1.5px solid rgba(253,252,248,0.4);text-decoration:none;" onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='rgba(253,252,248,0.4)'">How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="py-24 px-8 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <div class="reveal">
+        <div class="eyebrow"><span class="rule-short"></span>The Celestial Approach</div>
+        <h2 class="font-display font-light text-ink-900 mb-6" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.08;">A Plan Built Around<br><em style="font-style:italic;">You, Specifically</em></h2>
+        <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;line-height:1.8;color:#5a5044;margin-bottom:20px;">We don't believe in off-the-shelf itineraries. Every charter begins with a conversation — about your group, your pace, your interests, the moments that matter to you. From that, we craft an experience that cannot be replicated.</p>
+        <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;line-height:1.8;color:#5a5044;margin-bottom:20px;">Whether you want to anchor in a secluded cove for hours, visit three UNESCO sites in a day, or simply drift through the Bay of Kotor with a glass in hand — we handle every detail so you can be fully present.</p>
+        <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;line-height:1.8;color:#5a5044;">Your captain is not just a skipper. He is a local expert, a trusted guide, and a discreet companion for the duration of your voyage.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s;">
+        <div class="relative overflow-hidden" style="height:480px;">
+          <img src="brand_assets/a2.jpg" alt="Private Charter" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,110,0.08) 0%,transparent 60%);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="py-24 px-8 lg:px-14" style="background:#f8f4ec;">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal text-center mb-16">
+      <div class="eyebrow justify-center"><span class="rule-short"></span>Every Charter Includes<span class="rule-short"></span></div>
+      <h2 class="font-display font-light text-ink-900" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.08;">Nothing Left to Chance</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="reveal" style="transition-delay:0.05s;">
+        <div style="width:48px;height:48px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.3rem;letter-spacing:-0.02em;">Expert Captain</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">A fully licensed, locally knowledgeable captain who knows every bay, reef, and hidden gem of the Montenegrin coast.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s;">
+        <div style="width:48px;height:48px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.3rem;letter-spacing:-0.02em;">Custom Itinerary</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">A route planned entirely around your preferences — islands, caves, historic towns, beach clubs, or open sea. You decide.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.15s;">
+        <div style="width:48px;height:48px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.3rem;letter-spacing:-0.02em;">Flexible Duration</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">Half-day, full-day, or multi-day voyages. Your charter runs on your schedule, not ours.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s;">
+        <div style="width:48px;height:48px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.3rem;letter-spacing:-0.02em;">Full Safety Equipment</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">Every vessel is fully equipped and insured. Your safety is never an afterthought — it is the foundation everything else is built on.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.25s;">
+        <div style="width:48px;height:48px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.3rem;letter-spacing:-0.02em;">Personal Touches</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">Celebrating a birthday, anniversary, or proposal? Tell us. We'll arrange flowers, champagne, music — whatever makes the moment unforgettable.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.3s;">
+        <div style="width:48px;height:48px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" fill="none" stroke="#c9a96e" stroke-width="1.4" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="font-display font-light text-ink-900 mb-3" style="font-size:1.3rem;letter-spacing:-0.02em;">Direct Communication</h4>
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">No booking portals, no call centres. You speak directly with us from the first message to the moment you step aboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="py-24 px-8 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-20 items-start">
+      <div class="reveal">
+        <div class="eyebrow"><span class="rule-short"></span>The Process</div>
+        <h2 class="font-display font-light text-ink-900 mb-12" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.08;">From First Message<br><em style="font-style:italic;">to Open Water</em></h2>
+        <div class="space-y-10">
+          <div class="step-card" data-step="1">
+            <h4 style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:#3a3328;letter-spacing:0.05em;margin-bottom:8px;">Tell us about your group</h4>
+            <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">How many guests, what dates, any special requests or occasions. The more you share, the better we can plan.</p>
+          </div>
+          <div class="step-card" data-step="2">
+            <h4 style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:#3a3328;letter-spacing:0.05em;margin-bottom:8px;">We design your itinerary</h4>
+            <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">We put together a personalised route, recommend the right vessel, and confirm all the details with you before anything is booked.</p>
+          </div>
+          <div class="step-card" data-step="3">
+            <h4 style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:#3a3328;letter-spacing:0.05em;margin-bottom:8px;">You confirm and relax</h4>
+            <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">Once you're happy, we lock in your booking. From that moment, we handle everything — you just show up and enjoy.</p>
+          </div>
+          <div class="step-card" data-step="4">
+            <h4 style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:#3a3328;letter-spacing:0.05em;margin-bottom:8px;">Your day on the water</h4>
+            <p style="font-family:'Inter',sans-serif;font-size:0.875rem;line-height:1.8;color:#5a5044;">Your captain meets you at the marina. From there, the Adriatic is yours.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s;position:relative;">
+        <div class="relative overflow-hidden" style="height:560px;">
+          <img src="brand_assets/c3.JPG" alt="Charter planning" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+        </div>
+        <div style="position:absolute;bottom:-24px;right:-24px;background:#c9a96e;padding:32px;max-width:240px;">
+          <div class="font-display font-light text-white" style="font-size:2.4rem;letter-spacing:-0.02em;line-height:1;">100%</div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:6px;">Tailored to you</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 px-8 lg:px-14" style="background:#1b1b1b;">
+  <div class="max-w-7xl mx-auto text-center reveal">
+    <div class="eyebrow justify-center" style="color:rgba(201,169,110,0.8);"><span class="rule-short"></span>Start Planning<span class="rule-short"></span></div>
+    <h2 class="font-display font-light text-white mb-6" style="font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-0.03em;line-height:1.08;">Your Perfect Day<br><em style="font-style:italic;">is One Message Away</em></h2>
+    <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:rgba(255,255,255,0.45);max-width:460px;margin:0 auto 40px;line-height:1.8;">Reach out via WhatsApp and we'll start building your charter within the hour. No forms, no waiting — just a conversation.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold">Plan My Charter</a>
+      <a href="index.html#contact" style="display:inline-block;padding:13px 40px;background:transparent;color:rgba(255,255,255,0.6);font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.2);text-decoration:none;" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">Send an Enquiry</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#141414;padding:32px 0;border-top:1px solid rgba(201,169,110,0.1);">
+  <div class="max-w-7xl mx-auto px-8 lg:px-14 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2);">&copy; 2026 Celestial Charter. All rights reserved.</p>
+    <a href="index.html#services" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(201,169,110,0.5);text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(201,169,110,0.5)'">← What We Offer</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ham').addEventListener('click', () => document.getElementById('mob-menu').classList.toggle('is-open'));
+  const obs = new IntersectionObserver(e => e.forEach(el => { if (el.isIntersecting) el.target.classList.add('in'); }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
