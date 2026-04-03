@@ -429,7 +429,7 @@
     <!-- Fleet grid -->
     <div class="grid md:grid-cols-3 gap-6">
 
-      <div class="reveal vessel-card" style="transition-delay:0.04s;">
+      <div class="reveal vessel-card" style="transition-delay:0.04s; cursor:pointer;" onclick="window.location='molinete.html'">
         <div class="relative overflow-hidden" style="height:208px;">
           <div class="mo-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
             <img src="brand_assets/m1.JPG" alt="Molinete" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
@@ -447,11 +447,11 @@
             <img src="brand_assets/m5.JPG" alt="Molinete" style="width:100%;height:100%;object-fit:cover;object-position:center 72%;">
           </div>
           <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:5px;align-items:center;">
-            <button class="mo-dot" onclick="moGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="mo-dot" onclick="moGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="mo-dot" onclick="moGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="mo-dot" onclick="moGo(3)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="mo-dot" onclick="moGo(4)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="event.stopPropagation();moGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="event.stopPropagation();moGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="event.stopPropagation();moGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="event.stopPropagation();moGo(3)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="mo-dot" onclick="event.stopPropagation();moGo(4)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
           </div>
         </div>
         <div class="p-6">
@@ -476,13 +476,13 @@
             </div>
           </div>
           <div class="mt-5 flex gap-3 items-center">
-            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;">Book Now</a>
+            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;" onclick="event.stopPropagation()">Book Now</a>
             <a href="molinete.html" style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;text-decoration:none;white-space:nowrap;border:1px solid #c9a96e;padding:6px 14px;transition:color 0.2s ease,background 0.2s ease;" onmouseover="this.style.background='#c9a96e';this.style.color='#1a1712'" onmouseout="this.style.background='transparent';this.style.color='#c9a96e'">Details →</a>
           </div>
         </div>
       </div>
 
-      <div class="reveal vessel-card" style="transition-delay:0.1s;">
+      <div class="reveal vessel-card" style="transition-delay:0.1s; cursor:pointer;" onclick="window.location='corto.html'">
         <div class="relative overflow-hidden" style="height:208px;">
           <div class="co-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
             <img src="brand_assets/c1.JPG" alt="Corto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
@@ -503,12 +503,12 @@
             <img src="brand_assets/c6.JPG" alt="Corto" style="width:100%;height:100%;object-fit:cover;object-position:center;">
           </div>
           <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:5px;align-items:center;">
-            <button class="co-dot" onclick="coGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="co-dot" onclick="coGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="co-dot" onclick="coGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="co-dot" onclick="coGo(3)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="co-dot" onclick="coGo(4)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="co-dot" onclick="coGo(5)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="event.stopPropagation();coGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="event.stopPropagation();coGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="event.stopPropagation();coGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="event.stopPropagation();coGo(3)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="event.stopPropagation();coGo(4)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="co-dot" onclick="event.stopPropagation();coGo(5)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
           </div>
         </div>
         <div class="p-6">
@@ -533,13 +533,13 @@
             </div>
           </div>
           <div class="mt-5 flex gap-3 items-center">
-            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;">Book Now</a>
+            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;" onclick="event.stopPropagation()">Book Now</a>
             <a href="corto.html" style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;text-decoration:none;white-space:nowrap;border:1px solid #c9a96e;padding:6px 14px;transition:color 0.2s ease,background 0.2s ease;" onmouseover="this.style.background='#c9a96e';this.style.color='#1a1712'" onmouseout="this.style.background='transparent';this.style.color='#c9a96e'">Details →</a>
           </div>
         </div>
       </div>
 
-      <div class="reveal vessel-card" style="transition-delay:0.16s;">
+      <div class="reveal vessel-card" style="transition-delay:0.16s; cursor:pointer;" onclick="window.location='axopar.html'">
         <div class="relative overflow-hidden" style="height:208px;">
           <div class="ax-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
             <img src="brand_assets/a1.jpg" alt="Axopar Brabus 29" style="width:100%;height:100%;object-fit:cover;object-position:center;">
@@ -560,12 +560,12 @@
             <img src="brand_assets/a6.jpg" alt="Axopar Brabus 29" style="width:100%;height:100%;object-fit:cover;object-position:center;">
           </div>
           <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:5px;align-items:center;">
-            <button class="ax-dot" onclick="axGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="ax-dot" onclick="axGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="ax-dot" onclick="axGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="ax-dot" onclick="axGo(3)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="ax-dot" onclick="axGo(4)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="ax-dot" onclick="axGo(5)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="event.stopPropagation();axGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="event.stopPropagation();axGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="event.stopPropagation();axGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="event.stopPropagation();axGo(3)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="event.stopPropagation();axGo(4)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="ax-dot" onclick="event.stopPropagation();axGo(5)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
           </div>
         </div>
         <div class="p-6">
@@ -590,7 +590,7 @@
             </div>
           </div>
           <div class="mt-5 flex gap-3 items-center">
-            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;">Book Now</a>
+            <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-gold" style="flex:1;box-sizing:border-box;text-align:center;" onclick="event.stopPropagation()">Book Now</a>
             <a href="axopar.html" style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;text-decoration:none;white-space:nowrap;border:1px solid #c9a96e;padding:6px 14px;transition:color 0.2s ease,background 0.2s ease;" onmouseover="this.style.background='#c9a96e';this.style.color='#1a1712'" onmouseout="this.style.background='transparent';this.style.color='#c9a96e'">Details →</a>
           </div>
         </div>
@@ -623,7 +623,7 @@
     <div class="grid md:grid-cols-3 gap-8">
 
       <!-- Private Charter -->
-      <div class="reveal group cursor-pointer" style="transition-delay:0.05s;">
+      <div class="reveal group cursor-pointer" style="transition-delay:0.05s;" onclick="window.location='charters.html'">
         <div class="mb-6 relative overflow-hidden" style="height:224px;">
           <!-- Mini carousel -->
           <div class="pc-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
@@ -638,9 +638,9 @@
           <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,21,32,0.5) 0%,transparent 50%);z-index:1;"></div>
           <!-- Dot indicators -->
           <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:6px;align-items:center;">
-            <button class="pc-dot" onclick="pcGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="pc-dot" onclick="pcGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="pc-dot" onclick="pcGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="pc-dot" onclick="event.stopPropagation();pcGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="pc-dot" onclick="event.stopPropagation();pcGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="pc-dot" onclick="event.stopPropagation();pcGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
           </div>
         </div>
         <div class="eyebrow" style="margin-bottom:10px;">
@@ -652,13 +652,13 @@
           Set your own course across the stunning Bay of Kotor.
         </p>
         <div style="display:flex;align-items:center;gap:20px;">
-          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#1a1712; text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:#c9a96e; padding:7px 16px; transition:background 0.2s ease,color 0.2s ease;" onmouseover="this.style.background='#a18756'" onmouseout="this.style.background='#c9a96e'">Enquire Now →</a>
+          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#1a1712; text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:#c9a96e; padding:7px 16px; transition:background 0.2s ease,color 0.2s ease;" onmouseover="this.style.background='#a18756'" onmouseout="this.style.background='#c9a96e'" onclick="event.stopPropagation()">Enquire Now →</a>
           <a href="charters.html" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#c9a96e;text-decoration:none;border:1px solid #c9a96e;padding:6px 14px;transition:color 0.2s ease,background 0.2s ease;" onmouseover="this.style.background='#c9a96e';this.style.color='#1a1712'" onmouseout="this.style.background='transparent';this.style.color='#c9a96e'">Details →</a>
         </div>
       </div>
 
       <!-- Scenic Tours -->
-      <div class="reveal group cursor-pointer" style="transition-delay:0.12s;">
+      <div class="reveal group cursor-pointer" style="transition-delay:0.12s;" onclick="window.location='tours.html'">
         <div class="mb-6 relative overflow-hidden" style="height:224px;">
           <div class="st-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
             <img src="brand_assets/spilja2.webp" alt="Scenic Tours" style="width:100%;height:100%;object-fit:cover;object-position:center;">
@@ -674,10 +674,10 @@
           </div>
           <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,21,32,0.5) 0%,transparent 50%);z-index:1;"></div>
           <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:6px;align-items:center;">
-            <button class="st-dot" onclick="stGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="st-dot" onclick="stGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="st-dot" onclick="stGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="st-dot" onclick="stGo(3)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="st-dot" onclick="event.stopPropagation();stGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="st-dot" onclick="event.stopPropagation();stGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="st-dot" onclick="event.stopPropagation();stGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="st-dot" onclick="event.stopPropagation();stGo(3)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
           </div>
         </div>
         <div class="eyebrow" style="margin-bottom:10px;">
@@ -689,13 +689,13 @@
           Hidden coves, Lady of the Rocks, Perast and Montenegro's finest coastal gems.
         </p>
         <div style="display:flex;align-items:center;gap:20px;">
-          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#1a1712; text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:#c9a96e; padding:7px 16px; transition:background 0.2s ease,color 0.2s ease;" onmouseover="this.style.background='#a18756'" onmouseout="this.style.background='#c9a96e'">Enquire Now →</a>
+          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#1a1712; text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:#c9a96e; padding:7px 16px; transition:background 0.2s ease,color 0.2s ease;" onmouseover="this.style.background='#a18756'" onmouseout="this.style.background='#c9a96e'" onclick="event.stopPropagation()">Enquire Now →</a>
           <a href="tours.html" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#c9a96e;text-decoration:none;border:1px solid #c9a96e;padding:6px 14px;transition:color 0.2s ease,background 0.2s ease;" onmouseover="this.style.background='#c9a96e';this.style.color='#1a1712'" onmouseout="this.style.background='transparent';this.style.color='#c9a96e'">Details →</a>
         </div>
       </div>
 
       <!-- Transfers & Events -->
-      <div class="reveal group cursor-pointer" style="transition-delay:0.2s;">
+      <div class="reveal group cursor-pointer" style="transition-delay:0.2s;" onclick="window.location='transfers.html'">
         <div class="mb-6 relative overflow-hidden" style="height:224px;">
           <div class="te-slide" style="position:absolute;inset:0;opacity:1;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1);">
             <img src="brand_assets/a6.jpg" alt="Transfers & Events" style="width:100%;height:100%;object-fit:cover;object-position:center;">
@@ -708,9 +708,9 @@
           </div>
           <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,21,32,0.5) 0%,transparent 50%);z-index:1;"></div>
           <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:6px;align-items:center;">
-            <button class="te-dot" onclick="teGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="te-dot" onclick="teGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
-            <button class="te-dot" onclick="teGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="te-dot" onclick="event.stopPropagation();teGo(0)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:#c9a96e;opacity:1;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="te-dot" onclick="event.stopPropagation();teGo(1)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
+            <button class="te-dot" onclick="event.stopPropagation();teGo(2)" style="width:10px;height:10px;border-radius:50%;border:2px solid #c9a96e;cursor:pointer;background:transparent;opacity:0.6;transition:opacity 0.3s,background 0.3s;padding:0;"></button>
           </div>
         </div>
         <div class="eyebrow" style="margin-bottom:10px;">
@@ -722,7 +722,7 @@
           Exclusive corporate or private event hire across the Adriatic.
         </p>
         <div style="display:flex;align-items:center;gap:20px;">
-          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#1a1712; text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:#c9a96e; padding:7px 16px; transition:background 0.2s ease,color 0.2s ease;" onmouseover="this.style.background='#a18756'" onmouseout="this.style.background='#c9a96e'">Enquire Now →</a>
+          <a href="https://api.whatsapp.com/send/?phone=38267671705&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="font-family:'Inter',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#1a1712; text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:#c9a96e; padding:7px 16px; transition:background 0.2s ease,color 0.2s ease;" onmouseover="this.style.background='#a18756'" onmouseout="this.style.background='#c9a96e'" onclick="event.stopPropagation()">Enquire Now →</a>
           <a href="transfers.html" style="font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#c9a96e;text-decoration:none;border:1px solid #c9a96e;padding:6px 14px;transition:color 0.2s ease,background 0.2s ease;" onmouseover="this.style.background='#c9a96e';this.style.color='#1a1712'" onmouseout="this.style.background='transparent';this.style.color='#c9a96e'">Details →</a>
         </div>
       </div>
